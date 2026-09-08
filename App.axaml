@@ -1,0 +1,28 @@
+<!-- App.axaml -->
+<Application
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Weatherly.App">
+
+    <Application.Styles>
+
+        <FluentTheme />
+
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#1B2230"/>
+            <Setter Property="Foreground" Value="#DDE1E8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="CornerRadius" Value="14"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#252D3C"/>
+        </Style>
+
+        <Style Selector="Button:pressed">
+            <Setter Property="Background" Value="#30394A"/>
+        </Style>
+
+    </Application.Styles>
+</Application>
