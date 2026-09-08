@@ -20,3 +20,6 @@ Thumbs.db
 
 # Avalonia
 *.cache
+
+# Node Modules
+node_modules/
