@@ -1,0 +1,139 @@
+<!--  Views/Components/WeeklyForecast.axaml  -->
+
+<UserControl
+    x:Class="Weatherly.Views.Components.WeeklyForecast"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:svg="clr-namespace:Avalonia.Svg.Skia;assembly=Svg.Controls.Skia.Avalonia"
+    xmlns:vm="using:Weatherly.ViewModels"
+    x:DataType="vm:MainViewModel">
+
+    <Border Padding="20" Classes="glass-card">
+
+        <Grid RowDefinitions="Auto,*" RowSpacing="12">
+
+            <!--  HEADER  -->
+
+            <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+
+                <StackPanel Spacing="2">
+
+                    <TextBlock Classes="text-section-title" Text="Прогноз на неделю" />
+
+                    <TextBlock Classes="text-muted" Text="7 дней" />
+
+                </StackPanel>
+
+            </Grid>
+
+
+            <!--  DAYS  -->
+
+            <ItemsControl Grid.Row="1" ItemsSource="{Binding Daily}">
+
+                <ItemsControl.ItemsPanel>
+
+                    <ItemsPanelTemplate>
+
+                        <UniformGrid
+                            HorizontalAlignment="Stretch"
+                            Columns="7"
+                            Rows="1" />
+
+                    </ItemsPanelTemplate>
+
+                </ItemsControl.ItemsPanel>
+
+
+                <ItemsControl.ItemTemplate>
+
+                    <DataTemplate x:DataType="vm:DailyWeatherItem">
+
+                        <Border
+                            Margin="3"
+                            Padding="7"
+                            Classes="forecast-card">
+
+                            <Grid RowDefinitions="Auto,Auto,112,Auto" RowSpacing="2">
+
+
+                                <!--  DAY  -->
+
+                                <TextBlock
+                                    Grid.Row="0"
+                                    HorizontalAlignment="Center"
+                                    FontFamily="Inter"
+                                    FontSize="11"
+                                    FontWeight="SemiBold"
+                                    Foreground="{StaticResource BrushTextPrimary}"
+                                    Text="{Binding Day}" />
+
+
+                                <!--  DATE  -->
+
+                                <TextBlock
+                                    Grid.Row="1"
+                                    HorizontalAlignment="Center"
+                                    FontFamily="Inter"
+                                    FontSize="9"
+                                    Foreground="{StaticResource BrushTextMuted}"
+                                    Text="{Binding Date}" />
+
+
+                                <!--  WEATHER ICON  -->
+
+                                <Grid
+                                    Grid.Row="2"
+                                    Height="128"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center">
+
+                                    <Ellipse
+                                        Width="108"
+                                        Height="108"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Fill="{StaticResource BrushWeatherGlow}"
+                                        Opacity="0.14" />
+
+                                    <svg:Svg
+                                        Width="128"
+                                        Height="128"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        AnimationBackend="Default"
+                                        AnimationFrameInterval="0:0:0.016"
+                                        AnimationPlaybackRate="1"
+                                        EnableCache="True"
+                                        Path="{Binding IconPath}"
+                                        Stretch="Uniform" />
+
+                                </Grid>
+
+
+                                <!--  TEMPERATURE  -->
+
+                                <TextBlock
+                                    Grid.Row="3"
+                                    HorizontalAlignment="Center"
+                                    FontFamily="Inter"
+                                    FontSize="12"
+                                    FontWeight="SemiBold"
+                                    Foreground="{StaticResource BrushTextPrimary}"
+                                    Text="{Binding Temperature}" />
+
+                            </Grid>
+
+                        </Border>
+
+                    </DataTemplate>
+
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>

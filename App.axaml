@@ -1,11 +1,29 @@
-<!-- App.axaml -->
+<!--  App.axaml  -->
 <Application
+    x:Class="Weatherly.App"
     xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    x:Class="Weatherly.App">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <MergeResourceInclude Source="/Styles/Colors.axaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Application.Resources>
 
     <Application.Styles>
+
         <FluentTheme />
+
+        <StyleInclude Source="/Styles/Cards.axaml" />
+        <StyleInclude Source="/Styles/Typography.axaml" />
+        <StyleInclude Source="/Styles/Buttons.axaml" />
+
     </Application.Styles>
 
 </Application>

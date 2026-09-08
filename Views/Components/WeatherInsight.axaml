@@ -1,0 +1,205 @@
+<!-- Views/Components/WeatherInsight.axaml -->
+
+<UserControl
+    x:Class="Weatherly.Views.Components.WeatherInsight"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:Weatherly.ViewModels"
+    x:DataType="vm:MainViewModel">
+
+    <Border
+        Padding="20"
+        Classes="glass-card-strong">
+
+        <Grid
+            RowDefinitions="Auto,*,Auto,Auto"
+            RowSpacing="12">
+
+
+            <!-- ================================================= -->
+            <!-- HEADER                                             -->
+            <!-- ================================================= -->
+
+            <Grid
+                Grid.Row="0"
+                ColumnDefinitions="*,Auto">
+
+                <StackPanel
+                    Spacing="2">
+
+                    <TextBlock
+                        Classes="text-section-title"
+                        Text="Weatherly Insight" />
+
+                    <TextBlock
+                        Classes="text-muted"
+                        Text="Анализ погоды" />
+
+                </StackPanel>
+
+
+                <Border
+                    Grid.Column="1"
+                    Padding="9,5"
+                    VerticalAlignment="Center"
+                    Background="{StaticResource BrushGlassSoft}"
+                    BorderBrush="{StaticResource BrushBorder}"
+                    BorderThickness="1"
+                    CornerRadius="9">
+
+                    <TextBlock
+                        FontFamily="Inter"
+                        FontSize="8"
+                        FontWeight="SemiBold"
+                        Foreground="{StaticResource BrushAccent}"
+                        Text="INSIGHT" />
+
+                </Border>
+
+            </Grid>
+
+
+            <!-- ================================================= -->
+            <!-- SUMMARY                                            -->
+            <!-- ================================================= -->
+
+            <Border
+                Grid.Row="1"
+                Padding="14"
+                VerticalAlignment="Center"
+                Background="{StaticResource BrushGlassSoft}"
+                BorderBrush="{StaticResource BrushBorderSoft}"
+                BorderThickness="1"
+                CornerRadius="14">
+
+                <TextBlock
+                    FontFamily="Inter"
+                    FontSize="12"
+                    Foreground="{StaticResource BrushTextSecondary}"
+                    LineHeight="17"
+                    Text="{Binding AnalysisText}"
+                    TextWrapping="Wrap" />
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- WALK                                                -->
+            <!-- ================================================= -->
+
+            <Border
+                Grid.Row="2"
+                Padding="11"
+                Background="{StaticResource BrushGlassSoft}"
+                BorderBrush="{StaticResource BrushBorderSoft}"
+                BorderThickness="1"
+                CornerRadius="13">
+
+                <Grid
+                    ColumnDefinitions="Auto,*"
+                    ColumnSpacing="11">
+
+
+                    <Border
+                        Width="32"
+                        Height="32"
+                        Background="{StaticResource BrushGlass}"
+                        BorderBrush="{StaticResource BrushBorderSoft}"
+                        BorderThickness="1"
+                        CornerRadius="9">
+
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="16"
+                            Foreground="{StaticResource BrushAccent}"
+                            Text="◷" />
+
+                    </Border>
+
+
+                    <StackPanel
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Spacing="2">
+
+                        <TextBlock
+                            Classes="text-section-label"
+                            Text="ЛУЧШЕЕ ВРЕМЯ ДЛЯ ПРОГУЛКИ" />
+
+                        <TextBlock
+                            FontFamily="Inter"
+                            FontSize="11"
+                            Foreground="{StaticResource BrushTextSecondary}"
+                            Text="{Binding BestWalkTime}"
+                            TextWrapping="Wrap" />
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- ================================================= -->
+            <!-- TIP                                                 -->
+            <!-- ================================================= -->
+
+            <Border
+                Grid.Row="3"
+                Padding="11"
+                Background="{StaticResource BrushGlassSoft}"
+                BorderBrush="{StaticResource BrushBorderSoft}"
+                BorderThickness="1"
+                CornerRadius="13">
+
+                <Grid
+                    ColumnDefinitions="Auto,*"
+                    ColumnSpacing="11">
+
+
+                    <Border
+                        Width="32"
+                        Height="32"
+                        Background="{StaticResource BrushGlass}"
+                        BorderBrush="{StaticResource BrushBorderSoft}"
+                        BorderThickness="1"
+                        CornerRadius="9">
+
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            Foreground="{StaticResource BrushAccent}"
+                            Text="✦" />
+
+                    </Border>
+
+
+                    <StackPanel
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Spacing="2">
+
+                        <TextBlock
+                            Classes="text-section-label"
+                            Text="СОВЕТ" />
+
+                        <TextBlock
+                            FontFamily="Inter"
+                            FontSize="11"
+                            Foreground="{StaticResource BrushTextSecondary}"
+                            Text="{Binding WeatherTip}"
+                            TextWrapping="Wrap" />
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Border>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>

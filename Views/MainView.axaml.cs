@@ -7,28 +7,35 @@ namespace Weatherly.Views;
 
 public partial class MainView : UserControl
 {
-    public MainViewModel ViewModel { get; }
-
     public MainView()
     {
         InitializeComponent();
 
-        ViewModel = new MainViewModel();
+        DataContext = new MainViewModel();
 
-        DataContext = ViewModel;
-
-        _ = LoadWeatherAsync();
-    }
-
-    private async Task LoadWeatherAsync()
-    {
-        await ViewModel.LoadAsync();
+        AttachedToVisualTree += async (_, _) =>
+        {
+            if (DataContext is MainViewModel viewModel)
+            {
+                await viewModel.LoadAsync();
+            }
+        };
     }
 
     private async void RefreshButton_OnClick(
         object? sender,
         RoutedEventArgs e)
     {
-        await ViewModel.LoadAsync();
+        if (DataContext is MainViewModel viewModel)
+        {
+            await viewModel.LoadAsync();
+        }
+    }
+
+    private void SettingsButton_OnClick(
+        object? sender,
+        RoutedEventArgs e)
+    {
+        // Настройки добавим следующим этапом.
     }
 }

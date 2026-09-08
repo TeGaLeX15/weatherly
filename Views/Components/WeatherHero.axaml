@@ -1,0 +1,185 @@
+<!--  Views/Components/WeatherHero.axaml  -->
+<UserControl
+    x:Class="Weatherly.Views.Components.WeatherHero"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:svg="clr-namespace:Avalonia.Svg.Skia;assembly=Svg.Controls.Skia.Avalonia"
+    xmlns:vm="using:Weatherly.ViewModels"
+    x:DataType="vm:MainViewModel">
+
+    <Border
+        Padding="28"
+        Classes="weather-hero-card"
+        ClipToBounds="True">
+
+        <Grid ColumnDefinitions="1.05*,0.95*">
+
+            <!--  =================================================  -->
+            <!--  ATMOSPHERIC BACKGROUND  -->
+            <!--  =================================================  -->
+
+            <Ellipse
+                Grid.Column="1"
+                Width="330"
+                Height="330"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Fill="{StaticResource BrushWeatherGlow}"
+                Opacity="0.38" />
+
+            <Ellipse
+                Grid.Column="1"
+                Width="210"
+                Height="210"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Fill="{StaticResource BrushWeatherGlow}"
+                Opacity="0.32" />
+
+
+            <!--  =================================================  -->
+            <!--  LEFT — WEATHER INFORMATION  -->
+            <!--  =================================================  -->
+
+            <Grid
+                Grid.Column="0"
+                VerticalAlignment="Stretch"
+                RowDefinitions="Auto,Auto,Auto,Auto,Auto,*">
+
+
+                <!--  CITY  -->
+
+                <TextBlock
+                    Grid.Row="0"
+                    FontFamily="Inter"
+                    FontSize="20"
+                    FontWeight="SemiBold"
+                    Foreground="{StaticResource BrushTextPrimary}"
+                    Text="{Binding CityName}" />
+
+
+                <!--  DATE  -->
+
+                <TextBlock
+                    Grid.Row="1"
+                    Margin="0,4,0,0"
+                    Classes="text-muted"
+                    Text="{Binding DateText}" />
+
+
+                <!--  TEMPERATURE  -->
+
+                <StackPanel
+                    Grid.Row="2"
+                    Margin="0,22,0,0"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+
+                    <TextBlock
+                        Classes="text-temperature"
+                        Foreground="{StaticResource BrushTextPrimary}"
+                        Text="{Binding CurrentTemperature}" />
+
+                </StackPanel>
+
+
+                <!--  CONDITION  -->
+
+                <TextBlock
+                    Grid.Row="3"
+                    Margin="0,4,0,0"
+                    FontFamily="Inter"
+                    FontSize="15"
+                    FontWeight="Medium"
+                    Foreground="{StaticResource BrushTextSecondary}"
+                    Text="{Binding CurrentCondition}" />
+
+
+                <!--  FEELS LIKE  -->
+
+                <TextBlock
+                    Grid.Row="4"
+                    Margin="0,7,0,0"
+                    Classes="text-small"
+                    Foreground="{StaticResource BrushTextMuted}"
+                    Text="{Binding FeelsLike}" />
+
+
+                <!--  MIN / MAX  -->
+
+                <Grid
+                    Grid.Row="5"
+                    Margin="0,16,0,0"
+                    VerticalAlignment="Bottom">
+
+                    <StackPanel Orientation="Horizontal" Spacing="14">
+
+                        <StackPanel Spacing="2">
+
+                            <TextBlock Classes="text-section-label" Text="СЕГОДНЯ" />
+
+                            <TextBlock
+                                FontFamily="Inter"
+                                FontSize="13"
+                                FontWeight="Medium"
+                                Foreground="{StaticResource BrushTextSecondary}"
+                                Text="{Binding TodayMinMax}" />
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Grid>
+
+
+            <!--  =================================================  -->
+            <!--  RIGHT — WEATHER VISUAL  -->
+            <!--  =================================================  -->
+
+            <Grid
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+
+
+                <!--  OUTER GLOW  -->
+
+                <Ellipse
+                    Width="300"
+                    Height="300"
+                    Fill="{StaticResource BrushWeatherGlow}"
+                    Opacity="0.18" />
+
+
+                <!--  INNER GLOW  -->
+
+                <Ellipse
+                    Width="230"
+                    Height="230"
+                    Fill="{StaticResource BrushWeatherGlow}"
+                    Opacity="0.28" />
+
+
+                <!--  ICON  -->
+
+                <svg:Svg
+                    Width="220"
+                    Height="220"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    AnimationBackend="Default"
+                    AnimationFrameInterval="0:0:0.016"
+                    AnimationPlaybackRate="1"
+                    EnableCache="True"
+                    Path="{Binding CurrentIconPath}"
+                    Stretch="Uniform" />
+
+            </Grid>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>

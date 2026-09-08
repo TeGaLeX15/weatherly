@@ -1,0 +1,228 @@
+<!-- Views/Components/WeatherMetrics.axaml -->
+
+<UserControl
+    x:Class="Weatherly.Views.Components.WeatherMetrics"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:Weatherly.ViewModels"
+    x:DataType="vm:MainViewModel">
+
+    <Border
+        Padding="16,13"
+        Background="{StaticResource BrushGlass}"
+        BorderBrush="{StaticResource BrushBorder}"
+        BorderThickness="1"
+        CornerRadius="22">
+
+        <Grid
+            VerticalAlignment="Center"
+            ColumnDefinitions="*,Auto,*,Auto,*,Auto,*,Auto,*">
+
+
+            <!-- ================================================= -->
+            <!-- ОЩУЩАЕТСЯ                                        -->
+            <!-- ================================================= -->
+
+            <StackPanel
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="4">
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontFamily="Inter"
+                    FontSize="10"
+                    FontWeight="Medium"
+                    Foreground="{StaticResource BrushTextMuted}"
+                    Text="Ощущается"
+                    TextWrapping="NoWrap" />
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontFamily="Inter"
+                    FontSize="18"
+                    FontWeight="SemiBold"
+                    Foreground="{StaticResource BrushTextPrimary}"
+                    Text="{Binding FeelsLike}"
+                    TextWrapping="NoWrap" />
+
+            </StackPanel>
+
+
+            <!-- ================================================= -->
+            <!-- DIVIDER                                            -->
+            <!-- ================================================= -->
+
+            <Border
+                Grid.Column="1"
+                Width="1"
+                Height="38"
+                Margin="14,0"
+                Background="{StaticResource BrushBorder}" />
+
+
+            <!-- ================================================= -->
+            <!-- ВЕТЕР                                              -->
+            <!-- ================================================= -->
+
+            <StackPanel
+                Grid.Column="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="4">
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontFamily="Inter"
+                    FontSize="10"
+                    FontWeight="Medium"
+                    Foreground="{StaticResource BrushTextMuted}"
+                    Text="Ветер"
+                    TextWrapping="NoWrap" />
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontFamily="Inter"
+                    FontSize="18"
+                    FontWeight="SemiBold"
+                    Foreground="{StaticResource BrushTextPrimary}"
+                    Text="{Binding Wind}"
+                    TextWrapping="NoWrap" />
+
+            </StackPanel>
+
+
+            <!-- ================================================= -->
+            <!-- DIVIDER                                            -->
+            <!-- ================================================= -->
+
+            <Border
+                Grid.Column="3"
+                Width="1"
+                Height="38"
+                Margin="14,0"
+                Background="{StaticResource BrushBorder}" />
+
+
+            <!-- ================================================= -->
+            <!-- ВЛАЖНОСТЬ                                          -->
+            <!-- ================================================= -->
+
+            <StackPanel
+                Grid.Column="4"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="4">
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontFamily="Inter"
+                    FontSize="10"
+                    FontWeight="Medium"
+                    Foreground="{StaticResource BrushTextMuted}"
+                    Text="Влажность"
+                    TextWrapping="NoWrap" />
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontFamily="Inter"
+                    FontSize="18"
+                    FontWeight="SemiBold"
+                    Foreground="{StaticResource BrushTextPrimary}"
+                    Text="{Binding Humidity}"
+                    TextWrapping="NoWrap" />
+
+            </StackPanel>
+
+
+            <!-- ================================================= -->
+            <!-- DIVIDER                                            -->
+            <!-- ================================================= -->
+
+            <Border
+                Grid.Column="5"
+                Width="1"
+                Height="38"
+                Margin="14,0"
+                Background="{StaticResource BrushBorder}" />
+
+
+            <!-- ================================================= -->
+            <!-- ВОСХОД                                             -->
+            <!-- ================================================= -->
+
+            <StackPanel
+                Grid.Column="6"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="4">
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontFamily="Inter"
+                    FontSize="10"
+                    FontWeight="Medium"
+                    Foreground="{StaticResource BrushTextMuted}"
+                    Text="Восход"
+                    TextWrapping="NoWrap" />
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontFamily="Inter"
+                    FontSize="18"
+                    FontWeight="SemiBold"
+                    Foreground="{StaticResource BrushTextPrimary}"
+                    Text="{Binding Sunrise}"
+                    TextWrapping="NoWrap" />
+
+            </StackPanel>
+
+
+            <!-- ================================================= -->
+            <!-- DIVIDER                                            -->
+            <!-- ================================================= -->
+
+            <Border
+                Grid.Column="7"
+                Width="1"
+                Height="38"
+                Margin="14,0"
+                Background="{StaticResource BrushBorder}" />
+
+
+            <!-- ================================================= -->
+            <!-- ЗАКАТ                                              -->
+            <!-- ================================================= -->
+
+            <StackPanel
+                Grid.Column="8"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="4">
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontFamily="Inter"
+                    FontSize="10"
+                    FontWeight="Medium"
+                    Foreground="{StaticResource BrushTextMuted}"
+                    Text="Закат"
+                    TextWrapping="NoWrap" />
+
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontFamily="Inter"
+                    FontSize="18"
+                    FontWeight="SemiBold"
+                    Foreground="{StaticResource BrushTextPrimary}"
+                    Text="{Binding Sunset}"
+                    TextWrapping="NoWrap" />
+
+            </StackPanel>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>
