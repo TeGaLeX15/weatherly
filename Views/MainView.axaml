@@ -1,0 +1,1061 @@
+<!--  Views/MainView.axaml  -->
+<UserControl
+    x:Class="Weatherly.Views.MainView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="using:Weatherly.Views.Components">
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+
+        <Grid MaxWidth="1180" Margin="40">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--  =================================================  -->
+            <!--  HEADER  -->
+            <!--  =================================================  -->
+
+            <Grid Grid.Row="0" Margin="0,0,0,28">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Spacing="4">
+
+                    <TextBlock
+                        FontSize="30"
+                        FontWeight="SemiBold"
+                        Foreground="#F4F6FA"
+                        Text="Щучинск" />
+
+                    <TextBlock
+                        FontSize="14"
+                        Foreground="#8E96A6"
+                        Text="Вторник, 8 сентября" />
+
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    Spacing="10">
+
+                    <Button
+                        Width="44"
+                        Height="44"
+                        Background="#151A24"
+                        BorderBrush="#252C3A"
+                        BorderThickness="1"
+                        Content="↻"
+                        CornerRadius="12"
+                        FontSize="20" />
+
+                    <Button
+                        Width="44"
+                        Height="44"
+                        Background="#151A24"
+                        BorderBrush="#252C3A"
+                        BorderThickness="1"
+                        Content="⚙"
+                        CornerRadius="12"
+                        FontSize="17" />
+
+                </StackPanel>
+
+            </Grid>
+
+
+            <!--  =================================================  -->
+            <!--  HERO  -->
+            <!--  =================================================  -->
+
+            <Border
+                Grid.Row="1"
+                Margin="0,0,0,24"
+                Padding="40"
+                Background="#151A24"
+                CornerRadius="28">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="320" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--  LEFT  -->
+
+                    <StackPanel VerticalAlignment="Center" Spacing="8">
+
+                        <TextBlock
+                            FontSize="14"
+                            Foreground="#8E96A6"
+                            Text="Сейчас" />
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+
+                            <TextBlock
+                                FontSize="104"
+                                FontWeight="SemiBold"
+                                Foreground="#F4F6FA"
+                                LetterSpacing="-2"
+                                Text="14" />
+
+                            <TextBlock
+                                Margin="5,5,0,0"
+                                FontSize="58"
+                                FontWeight="Light"
+                                Foreground="#8E96A6"
+                                Text="°" />
+
+                        </StackPanel>
+
+                        <TextBlock
+                            FontSize="24"
+                            FontWeight="Medium"
+                            Foreground="#F4F6FA"
+                            Text="Облачно" />
+
+                        <TextBlock
+                            Margin="0,2,0,0"
+                            FontSize="15"
+                            Foreground="#8E96A6"
+                            Text="Ощущается как 12°" />
+
+                        <StackPanel
+                            Margin="0,18,0,0"
+                            Orientation="Horizontal"
+                            Spacing="20">
+
+                            <StackPanel Spacing="3">
+
+                                <TextBlock
+                                    FontSize="12"
+                                    Foreground="#737C8D"
+                                    Text="Сегодня" />
+
+                                <TextBlock
+                                    FontSize="16"
+                                    Foreground="#DDE1E8"
+                                    Text="8° — 16°" />
+
+                            </StackPanel>
+
+                            <StackPanel Spacing="3">
+
+                                <TextBlock
+                                    FontSize="12"
+                                    Foreground="#737C8D"
+                                    Text="Ветер" />
+
+                                <TextBlock
+                                    FontSize="16"
+                                    Foreground="#DDE1E8"
+                                    Text="З 4 м/с" />
+
+                            </StackPanel>
+
+                            <StackPanel Spacing="3">
+
+                                <TextBlock
+                                    FontSize="12"
+                                    Foreground="#737C8D"
+                                    Text="Влажность" />
+
+                                <TextBlock
+                                    FontSize="16"
+                                    Foreground="#DDE1E8"
+                                    Text="72%" />
+
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+
+                    <!--  WEATHER SCENE  -->
+
+                    <components:WeatherScene
+                        Grid.Column="1"
+                        Width="300"
+                        Height="260"
+                        HorizontalAlignment="Right" />
+
+                </Grid>
+
+            </Border>
+
+
+            <!--  =================================================  -->
+            <!--  HOURLY  -->
+            <!--  =================================================  -->
+
+            <StackPanel
+                Grid.Row="2"
+                Margin="0,0,0,24"
+                Spacing="12">
+
+                <TextBlock
+                    FontSize="18"
+                    FontWeight="SemiBold"
+                    Foreground="#F4F6FA"
+                    Text="Почасовой прогноз" />
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <!--  14  -->
+
+                    <Border
+                        Grid.Column="0"
+                        Margin="0,0,5,0"
+                        Padding="15"
+                        Background="#1B2230"
+                        CornerRadius="16">
+
+                        <StackPanel HorizontalAlignment="Center" Spacing="9">
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="12"
+                                Foreground="#8E96A6"
+                                Text="14:00" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="28"
+                                Text="☁" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Foreground="#F4F6FA"
+                                Text="14°" />
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!--  15  -->
+
+                    <Border
+                        Grid.Column="1"
+                        Margin="5,0"
+                        Padding="15"
+                        Background="#1B2230"
+                        CornerRadius="16">
+
+                        <StackPanel HorizontalAlignment="Center" Spacing="9">
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="12"
+                                Foreground="#8E96A6"
+                                Text="15:00" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="28"
+                                Text="☁" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Foreground="#F4F6FA"
+                                Text="15°" />
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!--  16  -->
+
+                    <Border
+                        Grid.Column="2"
+                        Margin="5,0"
+                        Padding="15"
+                        Background="#1B2230"
+                        CornerRadius="16">
+
+                        <StackPanel HorizontalAlignment="Center" Spacing="9">
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="12"
+                                Foreground="#8E96A6"
+                                Text="16:00" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="28"
+                                Text="🌥" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Foreground="#F4F6FA"
+                                Text="16°" />
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!--  17  -->
+
+                    <Border
+                        Grid.Column="3"
+                        Margin="5,0"
+                        Padding="15"
+                        Background="#1B2230"
+                        CornerRadius="16">
+
+                        <StackPanel HorizontalAlignment="Center" Spacing="9">
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="12"
+                                Foreground="#8E96A6"
+                                Text="17:00" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="28"
+                                Text="🌥" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Foreground="#F4F6FA"
+                                Text="15°" />
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!--  18  -->
+
+                    <Border
+                        Grid.Column="4"
+                        Margin="5,0"
+                        Padding="15"
+                        Background="#1B2230"
+                        CornerRadius="16">
+
+                        <StackPanel HorizontalAlignment="Center" Spacing="9">
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="12"
+                                Foreground="#8E96A6"
+                                Text="18:00" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="28"
+                                Text="☁" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Foreground="#F4F6FA"
+                                Text="13°" />
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!--  19  -->
+
+                    <Border
+                        Grid.Column="5"
+                        Margin="5,0"
+                        Padding="15"
+                        Background="#1B2230"
+                        CornerRadius="16">
+
+                        <StackPanel HorizontalAlignment="Center" Spacing="9">
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="12"
+                                Foreground="#8E96A6"
+                                Text="19:00" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="28"
+                                Text="🌆" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Foreground="#F4F6FA"
+                                Text="11°" />
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!--  20  -->
+
+                    <Border
+                        Grid.Column="6"
+                        Margin="5,0"
+                        Padding="15"
+                        Background="#1B2230"
+                        CornerRadius="16">
+
+                        <StackPanel HorizontalAlignment="Center" Spacing="9">
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="12"
+                                Foreground="#8E96A6"
+                                Text="20:00" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="28"
+                                Text="☾" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Foreground="#F4F6FA"
+                                Text="10°" />
+
+                        </StackPanel>
+
+                    </Border>
+
+
+                    <!--  21  -->
+
+                    <Border
+                        Grid.Column="7"
+                        Margin="5,0,0,0"
+                        Padding="15"
+                        Background="#1B2230"
+                        CornerRadius="16">
+
+                        <StackPanel HorizontalAlignment="Center" Spacing="9">
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="12"
+                                Foreground="#8E96A6"
+                                Text="21:00" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="28"
+                                Text="☾" />
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Foreground="#F4F6FA"
+                                Text="9°" />
+
+                        </StackPanel>
+
+                    </Border>
+
+                </Grid>
+
+            </StackPanel>
+
+
+            <!--  =================================================  -->
+            <!--  ANALYSIS + CLOTHING  -->
+            <!--  =================================================  -->
+
+            <Grid Grid.Row="3" Margin="0,0,0,24">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <!--  ANALYSIS  -->
+
+                <Border
+                    Grid.Column="0"
+                    Margin="0,0,8,0"
+                    Padding="24"
+                    Background="#151A24"
+                    CornerRadius="22">
+
+                    <StackPanel Spacing="18">
+
+                        <TextBlock
+                            FontSize="18"
+                            FontWeight="SemiBold"
+                            Foreground="#F4F6FA"
+                            Text="Анализ погоды" />
+
+                        <TextBlock
+                            FontSize="14"
+                            Foreground="#AAB1BF"
+                            LineHeight="22"
+                            Text="Сегодня довольно спокойный день. Температура будет держаться в комфортном диапазоне, осадков практически не ожидается."
+                            TextWrapping="Wrap" />
+
+                        <Border
+                            Padding="16"
+                            Background="#1B2230"
+                            CornerRadius="14">
+
+                            <StackPanel Spacing="6">
+
+                                <TextBlock
+                                    FontSize="12"
+                                    Foreground="#737C8D"
+                                    Text="Лучшее время для прогулки" />
+
+                                <TextBlock
+                                    FontSize="20"
+                                    FontWeight="SemiBold"
+                                    Foreground="#F4F6FA"
+                                    Text="15:00 — 17:00" />
+
+                                <TextBlock
+                                    FontSize="13"
+                                    Foreground="#8E96A6"
+                                    Text="Теплее всего, слабый ветер и низкая вероятность осадков."
+                                    TextWrapping="Wrap" />
+
+                            </StackPanel>
+
+                        </Border>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!--  CLOTHING  -->
+
+                <Border
+                    Grid.Column="1"
+                    Margin="8,0,0,0"
+                    Padding="24"
+                    Background="#151A24"
+                    CornerRadius="22">
+
+                    <StackPanel Spacing="18">
+
+                        <TextBlock
+                            FontSize="18"
+                            FontWeight="SemiBold"
+                            Foreground="#F4F6FA"
+                            Text="Что надеть" />
+
+                        <TextBlock
+                            FontSize="14"
+                            Foreground="#AAB1BF"
+                            LineHeight="22"
+                            Text="Лёгкая куртка или худи. На улице прохладно, особенно вечером."
+                            TextWrapping="Wrap" />
+
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+
+                            <Border
+                                Padding="13,9"
+                                Background="#1B2230"
+                                CornerRadius="12">
+
+                                <TextBlock
+                                    FontSize="13"
+                                    Foreground="#DDE1E8"
+                                    Text="🧥 Куртка" />
+
+                            </Border>
+
+                            <Border
+                                Padding="13,9"
+                                Background="#1B2230"
+                                CornerRadius="12">
+
+                                <TextBlock
+                                    FontSize="13"
+                                    Foreground="#DDE1E8"
+                                    Text="👕 Худи" />
+
+                            </Border>
+
+                            <Border
+                                Padding="13,9"
+                                Background="#1B2230"
+                                CornerRadius="12">
+
+                                <TextBlock
+                                    FontSize="13"
+                                    Foreground="#DDE1E8"
+                                    Text="👟 Кроссовки" />
+
+                            </Border>
+
+                        </StackPanel>
+
+                        <Border
+                            Padding="16"
+                            Background="#1B2230"
+                            CornerRadius="14">
+
+                            <StackPanel>
+
+                                <TextBlock
+                                    FontSize="14"
+                                    Foreground="#DDE1E8"
+                                    Text="☂  Зонт сегодня не понадобится" />
+
+                            </StackPanel>
+
+                        </Border>
+
+                    </StackPanel>
+
+                </Border>
+
+            </Grid>
+
+
+            <!--  =================================================  -->
+            <!--  7 DAYS  -->
+            <!--  =================================================  -->
+
+            <Border
+                Grid.Row="4"
+                Padding="24"
+                Background="#151A24"
+                CornerRadius="22">
+
+                <StackPanel Spacing="18">
+
+                    <TextBlock
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Foreground="#F4F6FA"
+                        Text="Прогноз на 7 дней" />
+
+
+                    <!--  MON  -->
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="#F4F6FA"
+                            Text="Сегодня" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            FontSize="24"
+                            Text="☁" />
+
+                        <TextBlock
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            FontSize="13"
+                            Foreground="#8E96A6"
+                            Text="Облачно" />
+
+                        <TextBlock
+                            Grid.Column="3"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            Foreground="#F4F6FA"
+                            Text="8°   16°" />
+
+                    </Grid>
+
+
+                    <Border Height="1" Background="#252C3A" />
+
+
+                    <!--  TUE  -->
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="#F4F6FA"
+                            Text="Среда" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            FontSize="24"
+                            Text="🌥" />
+
+                        <TextBlock
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            FontSize="13"
+                            Foreground="#8E96A6"
+                            Text="Переменная облачность" />
+
+                        <TextBlock
+                            Grid.Column="3"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            Foreground="#F4F6FA"
+                            Text="7°   15°" />
+
+                    </Grid>
+
+
+                    <Border Height="1" Background="#252C3A" />
+
+
+                    <!--  WED  -->
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="#F4F6FA"
+                            Text="Четверг" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            FontSize="24"
+                            Text="🌧" />
+
+                        <TextBlock
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            FontSize="13"
+                            Foreground="#8E96A6"
+                            Text="Небольшой дождь" />
+
+                        <TextBlock
+                            Grid.Column="3"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            Foreground="#F4F6FA"
+                            Text="6°   12°" />
+
+                    </Grid>
+
+
+                    <Border Height="1" Background="#252C3A" />
+
+
+                    <!--  THU  -->
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="#F4F6FA"
+                            Text="Пятница" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            FontSize="24"
+                            Text="☀" />
+
+                        <TextBlock
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            FontSize="13"
+                            Foreground="#8E96A6"
+                            Text="Ясно" />
+
+                        <TextBlock
+                            Grid.Column="3"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            Foreground="#F4F6FA"
+                            Text="8°   18°" />
+
+                    </Grid>
+
+
+                    <Border Height="1" Background="#252C3A" />
+
+
+                    <!--  FRI  -->
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="#F4F6FA"
+                            Text="Суббота" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            FontSize="24"
+                            Text="☀" />
+
+                        <TextBlock
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            FontSize="13"
+                            Foreground="#8E96A6"
+                            Text="Солнечно" />
+
+                        <TextBlock
+                            Grid.Column="3"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            Foreground="#F4F6FA"
+                            Text="9°   20°" />
+
+                    </Grid>
+
+
+                    <Border Height="1" Background="#252C3A" />
+
+
+                    <!--  SAT  -->
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="#F4F6FA"
+                            Text="Воскресенье" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            FontSize="24"
+                            Text="🌥" />
+
+                        <TextBlock
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            FontSize="13"
+                            Foreground="#8E96A6"
+                            Text="Облачно" />
+
+                        <TextBlock
+                            Grid.Column="3"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            Foreground="#F4F6FA"
+                            Text="10°   19°" />
+
+                    </Grid>
+
+
+                    <Border Height="1" Background="#252C3A" />
+
+
+                    <!--  SUN  -->
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="90" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            Foreground="#F4F6FA"
+                            Text="Понедельник" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            FontSize="24"
+                            Text="🌧" />
+
+                        <TextBlock
+                            Grid.Column="2"
+                            VerticalAlignment="Center"
+                            FontSize="13"
+                            Foreground="#8E96A6"
+                            Text="Дождь" />
+
+                        <TextBlock
+                            Grid.Column="3"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            Foreground="#F4F6FA"
+                            Text="7°   14°" />
+
+                    </Grid>
+
+
+                    <!--  SUNRISE  -->
+
+                    <Border
+                        Margin="0,4,0,0"
+                        Padding="18"
+                        Background="#1B2230"
+                        CornerRadius="14">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Orientation="Horizontal" Spacing="12">
+
+                                <TextBlock
+                                    FontSize="24"
+                                    Foreground="#C9D0DC"
+                                    Text="↑" />
+
+                                <StackPanel Spacing="2">
+
+                                    <TextBlock
+                                        FontSize="12"
+                                        Foreground="#737C8D"
+                                        Text="Восход" />
+
+                                    <TextBlock
+                                        FontSize="17"
+                                        Foreground="#F4F6FA"
+                                        Text="06:12" />
+
+                                </StackPanel>
+
+                            </StackPanel>
+
+
+                            <StackPanel
+                                Grid.Column="1"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal"
+                                Spacing="12">
+
+                                <TextBlock
+                                    FontSize="24"
+                                    Foreground="#C9D0DC"
+                                    Text="↓" />
+
+                                <StackPanel Spacing="2">
+
+                                    <TextBlock
+                                        FontSize="12"
+                                        Foreground="#737C8D"
+                                        Text="Закат" />
+
+                                    <TextBlock
+                                        FontSize="17"
+                                        Foreground="#F4F6FA"
+                                        Text="19:42" />
+
+                                </StackPanel>
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                </StackPanel>
+
+            </Border>
+
+        </Grid>
+
+    </ScrollViewer>
+
+</UserControl>

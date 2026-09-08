@@ -1,0 +1,211 @@
+<!--  Views/Components/WeatherScene.axaml  -->
+<UserControl
+    x:Class="Weatherly.Views.Components.WeatherScene"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border
+        Background="#18202D"
+        ClipToBounds="True"
+        CornerRadius="28">
+
+        <Grid>
+
+            <!--  Background atmosphere  -->
+
+            <Rectangle>
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+
+                        <GradientStop Offset="0" Color="#1F2A3C" />
+
+                        <GradientStop Offset="1" Color="#151C29" />
+
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+
+            <!--  Soft atmospheric glow  -->
+
+            <Ellipse
+                Width="220"
+                Height="220"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Fill="#33435C"
+                Opacity="0.20" />
+
+
+            <Ellipse
+                Width="170"
+                Height="170"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Fill="#526A8A"
+                Opacity="0.08" />
+
+
+            <!--  Sun  -->
+
+            <Ellipse
+                Width="95"
+                Height="95"
+                Margin="0,-45,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Fill="#E7EDF7"
+                Opacity="0.95" />
+
+
+            <!--  Sun glow  -->
+
+            <Ellipse
+                Width="145"
+                Height="145"
+                Margin="0,-45,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Fill="#DCE7F7"
+                Opacity="0.06" />
+
+
+            <!--  Cloud 1  -->
+
+            <Canvas>
+
+                <Ellipse
+                    Canvas.Left="45"
+                    Canvas.Top="130"
+                    Width="105"
+                    Height="48"
+                    Fill="#66758B"
+                    Opacity="0.85" />
+
+                <Ellipse
+                    Canvas.Left="68"
+                    Canvas.Top="103"
+                    Width="55"
+                    Height="55"
+                    Fill="#718096"
+                    Opacity="0.9" />
+
+                <Ellipse
+                    Canvas.Left="103"
+                    Canvas.Top="95"
+                    Width="70"
+                    Height="65"
+                    Fill="#68788E"
+                    Opacity="0.9" />
+
+                <Ellipse
+                    Canvas.Left="142"
+                    Canvas.Top="112"
+                    Width="55"
+                    Height="50"
+                    Fill="#617187"
+                    Opacity="0.9" />
+
+            </Canvas>
+
+
+            <!--  Cloud 2  -->
+
+            <Canvas>
+
+                <Ellipse
+                    Canvas.Left="175"
+                    Canvas.Top="65"
+                    Width="80"
+                    Height="36"
+                    Fill="#49576B"
+                    Opacity="0.55" />
+
+                <Ellipse
+                    Canvas.Left="193"
+                    Canvas.Top="43"
+                    Width="42"
+                    Height="42"
+                    Fill="#536175"
+                    Opacity="0.60" />
+
+                <Ellipse
+                    Canvas.Left="220"
+                    Canvas.Top="45"
+                    Width="48"
+                    Height="45"
+                    Fill="#536175"
+                    Opacity="0.60" />
+
+            </Canvas>
+
+
+            <!--  Horizon  -->
+
+            <Rectangle Height="70" VerticalAlignment="Bottom">
+
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+
+                        <GradientStop Offset="0" Color="#202A39" />
+
+                        <GradientStop Offset="1" Color="#151C28" />
+
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+
+            </Rectangle>
+
+
+            <!--  Tiny distant lights  -->
+
+            <Ellipse
+                Width="3"
+                Height="3"
+                Margin="35,38,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Fill="#B7C3D4"
+                Opacity="0.45" />
+
+            <Ellipse
+                Width="3"
+                Height="3"
+                Margin="58,25,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Fill="#B7C3D4"
+                Opacity="0.35" />
+
+            <Ellipse
+                Width="2"
+                Height="2"
+                Margin="0,31,42,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Fill="#B7C3D4"
+                Opacity="0.4" />
+
+
+            <!--  Scene label  -->
+
+            <Border
+                Margin="18"
+                Padding="10,6"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Background="#10151E"
+                CornerRadius="10">
+
+                <TextBlock
+                    FontSize="11"
+                    Foreground="#C8D0DD"
+                    Text="Облачно" />
+
+            </Border>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>
