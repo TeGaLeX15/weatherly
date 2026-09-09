@@ -1,41 +1,57 @@
 <!--  Styles/Buttons.axaml  -->
 <Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style Selector="Button.icon-button">
+    <!--  ========================================  -->
+    <!--  Кнопки с иконкой  -->
+    <!--  ========================================  -->
 
+    <Style Selector="Button.icon-button">
         <Setter Property="Width" Value="40" />
         <Setter Property="Height" Value="40" />
         <Setter Property="Padding" Value="0" />
-
         <Setter Property="Background" Value="{StaticResource BrushGlassSoft}" />
-
         <Setter Property="Foreground" Value="{StaticResource BrushTextSecondary}" />
-
         <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}" />
-
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="12" />
-
     </Style>
 
-
+    <!--  Состояние при наведении  -->
     <Style Selector="Button.icon-button:pointerover">
-
         <Setter Property="Background" Value="{StaticResource BrushGlassStrong}" />
-
         <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}" />
-
         <Setter Property="BorderBrush" Value="{StaticResource BrushBorderStrong}" />
-
     </Style>
 
-
+    <!--  Состояние при нажатии  -->
     <Style Selector="Button.icon-button:pressed">
-
         <Setter Property="Background" Value="{StaticResource BrushSurfaceStrong}" />
-
         <Setter Property="Foreground" Value="{StaticResource BrushAccent}" />
+    </Style>
 
+    <!--  ========================================  -->
+    <!--  Кнопка выбора местоположения  -->
+    <!--  ========================================  -->
+
+    <Style Selector="Button.location-selector">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+    </Style>
+
+    <!--  Состояние при наведении  -->
+    <Style Selector="Button.location-selector:pointerover">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <!--  Состояние при нажатии  -->
+    <Style Selector="Button.location-selector:pressed">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
     </Style>
 
 </Styles>

@@ -1,5 +1,4 @@
-<!-- Views/Components/WeatherInsight.axaml -->
-
+<!--  Views/Components/WeatherInsight.axaml  -->
 <UserControl
     x:Class="Weatherly.Views.Components.WeatherInsight"
     xmlns="https://github.com/avaloniaui"
@@ -7,36 +6,24 @@
     xmlns:vm="using:Weatherly.ViewModels"
     x:DataType="vm:MainViewModel">
 
-    <Border
-        Padding="20"
-        Classes="glass-card-strong">
+    <!--  ========================================  -->
+    <!--  INSIGHTS  -->
+    <!--  ========================================  -->
 
-        <Grid
-            RowDefinitions="Auto,*,Auto,Auto"
-            RowSpacing="12">
+    <Border Padding="20" Classes="glass-card-strong">
 
+        <Grid RowDefinitions="Auto,*,Auto,Auto" RowSpacing="12">
 
-            <!-- ================================================= -->
-            <!-- HEADER                                             -->
-            <!-- ================================================= -->
+            <!--  Header  -->
+            <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
 
-            <Grid
-                Grid.Row="0"
-                ColumnDefinitions="*,Auto">
+                <StackPanel Spacing="2">
 
-                <StackPanel
-                    Spacing="2">
+                    <TextBlock Classes="text-section-title" Text="Weatherly Insight" />
 
-                    <TextBlock
-                        Classes="text-section-title"
-                        Text="Weatherly Insight" />
-
-                    <TextBlock
-                        Classes="text-muted"
-                        Text="Анализ погоды" />
+                    <TextBlock Classes="text-muted" Text="Анализ погоды" />
 
                 </StackPanel>
-
 
                 <Border
                     Grid.Column="1"
@@ -59,10 +46,7 @@
             </Grid>
 
 
-            <!-- ================================================= -->
-            <!-- SUMMARY                                            -->
-            <!-- ================================================= -->
-
+            <!--  Summary  -->
             <Border
                 Grid.Row="1"
                 Padding="14"
@@ -83,10 +67,7 @@
             </Border>
 
 
-            <!-- ================================================= -->
-            <!-- WALK                                                -->
-            <!-- ================================================= -->
-
+            <!--  Walk  -->
             <Border
                 Grid.Row="2"
                 Padding="11"
@@ -95,10 +76,7 @@
                 BorderThickness="1"
                 CornerRadius="13">
 
-                <Grid
-                    ColumnDefinitions="Auto,*"
-                    ColumnSpacing="11">
-
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="11">
 
                     <Border
                         Width="32"
@@ -117,15 +95,12 @@
 
                     </Border>
 
-
                     <StackPanel
                         Grid.Column="1"
                         VerticalAlignment="Center"
                         Spacing="2">
 
-                        <TextBlock
-                            Classes="text-section-label"
-                            Text="ЛУЧШЕЕ ВРЕМЯ ДЛЯ ПРОГУЛКИ" />
+                        <TextBlock Classes="text-section-label" Text="ЛУЧШЕЕ ВРЕМЯ ДЛЯ ПРОГУЛКИ" />
 
                         <TextBlock
                             FontFamily="Inter"
@@ -141,10 +116,7 @@
             </Border>
 
 
-            <!-- ================================================= -->
-            <!-- TIP                                                 -->
-            <!-- ================================================= -->
-
+            <!--  Tip  -->
             <Border
                 Grid.Row="3"
                 Padding="11"
@@ -153,10 +125,7 @@
                 BorderThickness="1"
                 CornerRadius="13">
 
-                <Grid
-                    ColumnDefinitions="Auto,*"
-                    ColumnSpacing="11">
-
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="11">
 
                     <Border
                         Width="32"
@@ -175,15 +144,12 @@
 
                     </Border>
 
-
                     <StackPanel
                         Grid.Column="1"
                         VerticalAlignment="Center"
                         Spacing="2">
 
-                        <TextBlock
-                            Classes="text-section-label"
-                            Text="СОВЕТ" />
+                        <TextBlock Classes="text-section-label" Text="СОВЕТ" />
 
                         <TextBlock
                             FontFamily="Inter"

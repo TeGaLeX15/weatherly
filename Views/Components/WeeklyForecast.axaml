@@ -1,5 +1,4 @@
 <!--  Views/Components/WeeklyForecast.axaml  -->
-
 <UserControl
     x:Class="Weatherly.Views.Components.WeeklyForecast"
     xmlns="https://github.com/avaloniaui"
@@ -8,97 +7,142 @@
     xmlns:vm="using:Weatherly.ViewModels"
     x:DataType="vm:MainViewModel">
 
-    <Border Padding="20" Classes="glass-card">
+    <!--  ========================================  -->
+    <!--  WEEKLY FORECAST  -->
+    <!--  ========================================  -->
 
-        <Grid RowDefinitions="Auto,*" RowSpacing="12">
+    <Border
+        Padding="22,18"
+        Classes="weather-hero-card"
+        ClipToBounds="True">
 
-            <!--  HEADER  -->
+        <Grid RowDefinitions="Auto,1,*" RowSpacing="15">
 
-            <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+            <!--  Header  -->
+            <Grid
+                Grid.Row="0"
+                VerticalAlignment="Center"
+                ColumnDefinitions="*,Auto">
 
-                <StackPanel Spacing="2">
+                <StackPanel
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Spacing="2">
 
-                    <TextBlock Classes="text-section-title" Text="Прогноз на неделю" />
+                    <TextBlock
+                        FontFamily="Inter"
+                        FontSize="17"
+                        FontWeight="SemiBold"
+                        Foreground="{StaticResource BrushTextPrimary}"
+                        Text="Прогноз на неделю" />
 
-                    <TextBlock Classes="text-muted" Text="7 дней" />
+                    <TextBlock
+                        FontFamily="Inter"
+                        FontSize="10"
+                        FontWeight="Medium"
+                        Foreground="{StaticResource BrushTextMuted}"
+                        Text="Погода на ближайшие 7 дней" />
 
                 </StackPanel>
+
+                <Border
+                    Grid.Column="1"
+                    Padding="10,5"
+                    VerticalAlignment="Center"
+                    Background="{StaticResource BrushGlassSoft}"
+                    BorderBrush="{StaticResource BrushBorder}"
+                    BorderThickness="1"
+                    CornerRadius="9">
+
+                    <TextBlock
+                        FontFamily="Inter"
+                        FontSize="9"
+                        FontWeight="SemiBold"
+                        Foreground="{StaticResource BrushAccent}"
+                        Text="7 ДНЕЙ" />
+
+                </Border>
 
             </Grid>
 
 
-            <!--  DAYS  -->
+            <Border
+                Grid.Row="1"
+                Height="1"
+                HorizontalAlignment="Stretch"
+                Background="{StaticResource BrushBorderSoft}" />
 
-            <ItemsControl Grid.Row="1" ItemsSource="{Binding Daily}">
+
+            <!--  Days  -->
+            <ItemsControl
+                Grid.Row="2"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                ItemsSource="{Binding Daily}">
 
                 <ItemsControl.ItemsPanel>
-
                     <ItemsPanelTemplate>
 
                         <UniformGrid
                             HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
                             Columns="7"
                             Rows="1" />
 
                     </ItemsPanelTemplate>
-
                 </ItemsControl.ItemsPanel>
 
-
                 <ItemsControl.ItemTemplate>
-
                     <DataTemplate x:DataType="vm:DailyWeatherItem">
 
-                        <Border
-                            Margin="3"
-                            Padding="7"
-                            Classes="forecast-card">
+                        <Grid Margin="1,0">
 
-                            <Grid RowDefinitions="Auto,Auto,112,Auto" RowSpacing="2">
-
-
-                                <!--  DAY  -->
+                            <Grid
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                RowDefinitions="Auto,Auto,104,Auto"
+                                RowSpacing="5">
 
                                 <TextBlock
                                     Grid.Row="0"
                                     HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
                                     FontFamily="Inter"
-                                    FontSize="11"
+                                    FontSize="13"
                                     FontWeight="SemiBold"
                                     Foreground="{StaticResource BrushTextPrimary}"
-                                    Text="{Binding Day}" />
-
-
-                                <!--  DATE  -->
+                                    Text="{Binding Day}"
+                                    TextWrapping="NoWrap" />
 
                                 <TextBlock
                                     Grid.Row="1"
                                     HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
                                     FontFamily="Inter"
-                                    FontSize="9"
+                                    FontSize="10"
+                                    FontWeight="Medium"
                                     Foreground="{StaticResource BrushTextMuted}"
-                                    Text="{Binding Date}" />
-
-
-                                <!--  WEATHER ICON  -->
+                                    Text="{Binding Date}"
+                                    TextWrapping="NoWrap" />
 
                                 <Grid
                                     Grid.Row="2"
-                                    Height="128"
-                                    HorizontalAlignment="Stretch"
+                                    Width="104"
+                                    Height="104"
+                                    HorizontalAlignment="Center"
                                     VerticalAlignment="Center">
 
                                     <Ellipse
-                                        Width="108"
-                                        Height="108"
+                                        Width="86"
+                                        Height="86"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Fill="{StaticResource BrushWeatherGlow}"
-                                        Opacity="0.14" />
+                                        Opacity="0.11" />
 
                                     <svg:Svg
-                                        Width="128"
-                                        Height="128"
+                                        Width="104"
+                                        Height="104"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         AnimationBackend="Default"
@@ -110,24 +154,31 @@
 
                                 </Grid>
 
-
-                                <!--  TEMPERATURE  -->
-
                                 <TextBlock
                                     Grid.Row="3"
                                     HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
                                     FontFamily="Inter"
-                                    FontSize="12"
+                                    FontSize="19"
                                     FontWeight="SemiBold"
                                     Foreground="{StaticResource BrushTextPrimary}"
-                                    Text="{Binding Temperature}" />
+                                    Text="{Binding Temperature}"
+                                    TextWrapping="NoWrap" />
 
                             </Grid>
 
-                        </Border>
+                            <Border
+                                Width="1"
+                                Height="72"
+                                Margin="0,4,0,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Background="{StaticResource BrushBorderSoft}"
+                                Opacity="0.65" />
+
+                        </Grid>
 
                     </DataTemplate>
-
                 </ItemsControl.ItemTemplate>
 
             </ItemsControl>

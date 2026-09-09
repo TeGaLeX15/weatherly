@@ -4,132 +4,79 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:components="using:Weatherly.Views.Components"
+    xmlns:svg="clr-namespace:Avalonia.Svg.Skia;assembly=Svg.Controls.Skia.Avalonia"
     xmlns:vm="using:Weatherly.ViewModels"
     x:DataType="vm:MainViewModel">
 
     <Grid>
 
-        <!-- ===================================================== -->
-        <!-- ATMOSPHERE                                             -->
-        <!-- ===================================================== -->
+        <!--  Main content  -->
+        <Border Padding="24">
 
-        <Border
-            Background="{StaticResource BrushAppBackground}" />
+            <Grid RowDefinitions="54,1*,82,1.05*" RowSpacing="14">
 
-        <!-- Blue atmospheric glow -->
-        <Border
-            Width="620"
-            Height="620"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            Margin="0,-260,-180,0"
-            Background="{StaticResource BrushWeatherGlow}"
-            Opacity="0.55" />
-
-        <!-- Purple atmospheric glow -->
-        <Border
-            Width="520"
-            Height="520"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            Margin="-220,0,0,-240"
-            Background="{StaticResource BrushPurpleGlow}"
-            Opacity="0.22" />
-
-
-        <!-- ===================================================== -->
-        <!-- MAIN CONTENT                                           -->
-        <!-- ===================================================== -->
-
-        <Border
-            Padding="24">
-
-            <Grid
-                RowDefinitions="54,1*,82,1.05*"
-                RowSpacing="14">
-
-
-                <!-- ================================================= -->
-                <!-- HEADER                                             -->
-                <!-- ================================================= -->
-
+                <!--  Header  -->
                 <Grid
                     Grid.Row="0"
                     VerticalAlignment="Center"
                     ColumnDefinitions="Auto,1*,Auto">
 
-
-                    <!-- BRAND -->
-
                     <StackPanel
                         Grid.Column="0"
-                        Orientation="Horizontal"
                         VerticalAlignment="Center"
-                        Spacing="10">
+                        Orientation="Horizontal"
+                        Spacing="9">
+
+                        <svg:Svg
+                            Width="24"
+                            Height="24"
+                            VerticalAlignment="Center"
+                            Path="/Assets/Icons/weatherly-mark.svg"
+                            Stretch="Uniform" />
 
                         <TextBlock
-                            Classes="text-page-title"
+                            VerticalAlignment="Center"
+                            FontFamily="Inter"
+                            FontSize="20"
+                            FontWeight="SemiBold"
+                            Foreground="{StaticResource BrushTextPrimary}"
                             Text="Weatherly" />
 
-                        <Border
-                            Padding="8,4"
-                            VerticalAlignment="Center"
-                            Background="{StaticResource BrushGlassSoft}"
-                            BorderBrush="{StaticResource BrushBorder}"
-                            BorderThickness="1"
-                            CornerRadius="8">
-
-                            <TextBlock
-                                FontFamily="Inter"
-                                FontSize="8"
-                                FontWeight="SemiBold"
-                                Foreground="{StaticResource BrushAccent}"
-                                Text="WEATHER" />
-
-                        </Border>
-
                     </StackPanel>
-
-
-                    <!-- LOCATION -->
 
                     <components:LocationSelector
                         Grid.Column="1"
                         Width="300"
                         HorizontalAlignment="Center" />
 
-
-                    <!-- ACTIONS -->
-
                     <StackPanel
                         Grid.Column="2"
                         Orientation="Horizontal"
-                        Spacing="7">
+                        Spacing="8">
 
                         <Button
                             Classes="icon-button"
                             Click="RefreshButton_OnClick"
                             ToolTip.Tip="Обновить">
 
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontSize="21"
-                                Text="↻" />
+                            <svg:Svg
+                                Width="18"
+                                Height="18"
+                                Path="/Assets/Icons/refresh.svg"
+                                Stretch="Uniform" />
 
                         </Button>
-
 
                         <Button
                             Classes="icon-button"
                             Click="SettingsButton_OnClick"
                             ToolTip.Tip="Настройки">
 
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontSize="16"
-                                Text="⚙" />
+                            <svg:Svg
+                                Width="18"
+                                Height="18"
+                                Path="/Assets/Icons/settings.svg"
+                                Stretch="Uniform" />
 
                         </Button>
 
@@ -138,54 +85,35 @@
                 </Grid>
 
 
-                <!-- ================================================= -->
-                <!-- HERO + HOURLY                                      -->
-                <!-- ================================================= -->
-
+                <!--  Hero + hourly  -->
                 <Grid
                     Grid.Row="1"
                     ColumnDefinitions="0.92*,1.65*"
                     ColumnSpacing="14">
 
-                    <components:WeatherHero
-                        Grid.Column="0" />
-
-                    <components:HourlyForecast
-                        Grid.Column="1" />
+                    <components:WeatherHero Grid.Column="0" />
+                    <components:HourlyForecast Grid.Column="1" />
 
                 </Grid>
 
 
-                <!-- ================================================= -->
-                <!-- METRICS                                            -->
-                <!-- ================================================= -->
-
-                <components:WeatherMetrics
-                    Grid.Row="2" />
+                <!--  Metrics  -->
+                <components:WeatherMetrics Grid.Row="2" />
 
 
-                <!-- ================================================= -->
-                <!-- WEEKLY + INSIGHT                                   -->
-                <!-- ================================================= -->
-
+                <!--  Weekly + insight  -->
                 <Grid
                     Grid.Row="3"
                     ColumnDefinitions="1.75*,1*"
                     ColumnSpacing="14">
 
-                    <components:WeeklyForecast
-                        Grid.Column="0" />
-
-                    <components:WeatherInsight
-                        Grid.Column="1" />
+                    <components:WeeklyForecast Grid.Column="0" />
+                    <components:WeatherInsight Grid.Column="1" />
 
                 </Grid>
 
 
-                <!-- ================================================= -->
-                <!-- LOADING OVERLAY                                    -->
-                <!-- ================================================= -->
-
+                <!--  Loading overlay  -->
                 <Border
                     Grid.RowSpan="4"
                     Background="#9906080D"
@@ -199,12 +127,10 @@
                         Background="{StaticResource BrushGlassElevated}"
                         BorderBrush="{StaticResource BrushBorderStrong}"
                         BorderThickness="1"
-                        CornerRadius="20"
-                        BoxShadow="0 20 60 0 #80000000">
+                        BoxShadow="0 20 60 0 #80000000"
+                        CornerRadius="20">
 
-                        <StackPanel
-                            HorizontalAlignment="Center"
-                            Spacing="14">
+                        <StackPanel HorizontalAlignment="Center" Spacing="14">
 
                             <ProgressBar
                                 Width="180"

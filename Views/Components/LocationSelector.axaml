@@ -1,86 +1,95 @@
-<!-- Views/Components/LocationSelector.axaml -->
-
+<!--  Views/Components/LocationSelector.axaml  -->
 <UserControl
     x:Class="Weatherly.Views.Components.LocationSelector"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:svg="clr-namespace:Avalonia.Svg.Skia;assembly=Svg.Controls.Skia.Avalonia"
     xmlns:vm="using:Weatherly.ViewModels"
     x:DataType="vm:MainViewModel">
 
-    <Border
-        Padding="10,7"
-        Background="{StaticResource BrushGlassSoft}"
-        BorderBrush="{StaticResource BrushBorder}"
-        BorderThickness="1"
-        CornerRadius="14">
+    <!--  ========================================  -->
+    <!--  LOCATION SELECTOR  -->
+    <!--  ========================================  -->
 
-        <Grid
-            VerticalAlignment="Center"
-            ColumnDefinitions="Auto,*,Auto">
+    <Button
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Classes="location-selector">
 
+        <!--  Location content  -->
+        <Border
+            Padding="12,9"
+            Background="{StaticResource BrushGlassSoft}"
+            BorderBrush="{StaticResource BrushBorder}"
+            BorderThickness="1"
+            CornerRadius="15">
 
-            <!-- ================================================= -->
-            <!-- LOCATION ICON                                     -->
-            <!-- ================================================= -->
+            <Grid ColumnDefinitions="36,*,Auto" ColumnSpacing="10">
 
-            <Border
-                Grid.Column="0"
-                Width="30"
-                Height="30"
-                Background="{StaticResource BrushGlass}"
-                BorderBrush="{StaticResource BrushBorderSoft}"
-                BorderThickness="1"
-                CornerRadius="9">
-
-                <TextBlock
+                <Border
+                    Grid.Column="0"
+                    Width="36"
+                    Height="36"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    FontSize="16"
-                    Foreground="{StaticResource BrushAccent}"
-                    Text="⌖" />
+                    Background="{StaticResource BrushGlass}"
+                    CornerRadius="11">
 
-            </Border>
+                    <svg:Svg
+                        Width="17"
+                        Height="17"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Path="/Assets/Icons/location.svg"
+                        Stretch="Uniform" />
 
+                </Border>
 
-            <!-- ================================================= -->
-            <!-- LOCATION TEXT                                     -->
-            <!-- ================================================= -->
+                <StackPanel
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Spacing="1">
 
-            <StackPanel
-                Grid.Column="1"
-                Margin="10,0"
-                Spacing="1">
+                    <TextBlock
+                        FontFamily="Inter"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="{StaticResource BrushTextPrimary}"
+                        Text="{Binding CityName}"
+                        TextTrimming="CharacterEllipsis" />
 
-                <TextBlock
-                    FontFamily="Inter"
-                    FontSize="12"
-                    FontWeight="SemiBold"
-                    Foreground="{StaticResource BrushTextPrimary}"
-                    Text="{Binding CityName}" />
+                    <StackPanel Orientation="Horizontal" Spacing="5">
 
-                <TextBlock
-                    FontFamily="Inter"
-                    FontSize="8"
-                    Foreground="{StaticResource BrushTextMuted}"
-                    Text="Текущее местоположение" />
+                        <Ellipse
+                            Width="5"
+                            Height="5"
+                            VerticalAlignment="Center"
+                            Fill="{StaticResource BrushSuccess}" />
 
-            </StackPanel>
+                        <TextBlock
+                            FontFamily="Inter"
+                            FontSize="9"
+                            Foreground="{StaticResource BrushTextMuted}"
+                            Text="Текущее местоположение" />
 
+                    </StackPanel>
 
-            <!-- ================================================= -->
-            <!-- ARROW                                              -->
-            <!-- ================================================= -->
+                </StackPanel>
 
-            <TextBlock
-                Grid.Column="2"
-                Margin="4,0,2,0"
-                VerticalAlignment="Center"
-                FontSize="13"
-                Foreground="{StaticResource BrushTextMuted}"
-                Text="⌄" />
+                <svg:Svg
+                    Grid.Column="2"
+                    Width="16"
+                    Height="16"
+                    Margin="8,0,2,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Path="/Assets/Icons/chevron-down.svg"
+                    Stretch="Uniform" />
 
-        </Grid>
+            </Grid>
 
-    </Border>
+        </Border>
+
+    </Button>
 
 </UserControl>

@@ -1,99 +1,82 @@
 <!--  Styles/Typography.axaml  -->
 <Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style Selector="TextBlock.text-page-title">
+    <!--  ========================================  -->
+    <!--  Заголовки  -->
+    <!--  ========================================  -->
 
+    <Style Selector="TextBlock.text-page-title">
         <Setter Property="FontFamily" Value="Inter" />
         <Setter Property="FontSize" Value="23" />
         <Setter Property="FontWeight" Value="SemiBold" />
-
         <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}" />
-
     </Style>
 
-
     <Style Selector="TextBlock.text-section-title">
-
         <Setter Property="FontFamily" Value="Inter" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontWeight" Value="SemiBold" />
-
         <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}" />
-
     </Style>
 
-
     <Style Selector="TextBlock.text-section-label">
-
         <Setter Property="FontFamily" Value="Inter" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="FontWeight" Value="SemiBold" />
-
         <Setter Property="Foreground" Value="{StaticResource BrushTextMuted}" />
-
     </Style>
 
 
-    <Style Selector="TextBlock.text-temperature">
+    <!--  ========================================  -->
+    <!--  Температура  -->
+    <!--  ========================================  -->
 
+    <Style Selector="TextBlock.text-temperature">
         <Setter Property="FontFamily" Value="Inter" />
         <Setter Property="FontSize" Value="68" />
         <Setter Property="FontWeight" Value="SemiBold" />
-
         <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}" />
-
         <Setter Property="LineHeight" Value="70" />
-
     </Style>
 
-
     <Style Selector="TextBlock.text-temperature-medium">
-
         <Setter Property="FontFamily" Value="Inter" />
         <Setter Property="FontSize" Value="21" />
         <Setter Property="FontWeight" Value="SemiBold" />
-
         <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}" />
-
     </Style>
 
+
+    <!--  ========================================  -->
+    <!--  Основной текст  -->
+    <!--  ========================================  -->
 
     <Style Selector="TextBlock.text-body">
-
         <Setter Property="FontFamily" Value="Inter" />
         <Setter Property="FontSize" Value="13" />
-
         <Setter Property="Foreground" Value="{StaticResource BrushTextSecondary}" />
-
     </Style>
-
 
     <Style Selector="TextBlock.text-small">
-
         <Setter Property="FontFamily" Value="Inter" />
         <Setter Property="FontSize" Value="11" />
-
         <Setter Property="Foreground" Value="{StaticResource BrushTextSecondary}" />
-
     </Style>
-
 
     <Style Selector="TextBlock.text-muted">
-
         <Setter Property="FontFamily" Value="Inter" />
         <Setter Property="FontSize" Value="11" />
-
         <Setter Property="Foreground" Value="{StaticResource BrushTextMuted}" />
-
     </Style>
 
 
+    <!--  ========================================  -->
+    <!--  Акцентный текст  -->
+    <!--  ========================================  -->
+
     <Style Selector="TextBlock.text-accent">
-
         <Setter Property="FontFamily" Value="Inter" />
-
         <Setter Property="Foreground" Value="{StaticResource BrushAccent}" />
-
     </Style>
 
 </Styles>

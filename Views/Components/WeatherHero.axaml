@@ -7,174 +7,224 @@
     xmlns:vm="using:Weatherly.ViewModels"
     x:DataType="vm:MainViewModel">
 
+    <!--  ========================================  -->
+    <!--  HERO CARD  -->
+    <!--  ========================================  -->
+
     <Border
-        Padding="28"
+        Padding="30"
         Classes="weather-hero-card"
         ClipToBounds="True">
 
-        <Grid ColumnDefinitions="1.05*,0.95*">
+        <Grid MinHeight="0" RowDefinitions="70,1*,64">
 
-            <!--  =================================================  -->
-            <!--  ATMOSPHERIC BACKGROUND  -->
-            <!--  =================================================  -->
-
-            <Ellipse
-                Grid.Column="1"
-                Width="330"
-                Height="330"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Fill="{StaticResource BrushWeatherGlow}"
-                Opacity="0.38" />
-
-            <Ellipse
-                Grid.Column="1"
-                Width="210"
-                Height="210"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Fill="{StaticResource BrushWeatherGlow}"
-                Opacity="0.32" />
-
-
-            <!--  =================================================  -->
-            <!--  LEFT — WEATHER INFORMATION  -->
-            <!--  =================================================  -->
-
+            <!--  Header  -->
             <Grid
-                Grid.Column="0"
-                VerticalAlignment="Stretch"
-                RowDefinitions="Auto,Auto,Auto,Auto,Auto,*">
-
-
-                <!--  CITY  -->
-
-                <TextBlock
-                    Grid.Row="0"
-                    FontFamily="Inter"
-                    FontSize="20"
-                    FontWeight="SemiBold"
-                    Foreground="{StaticResource BrushTextPrimary}"
-                    Text="{Binding CityName}" />
-
-
-                <!--  DATE  -->
-
-                <TextBlock
-                    Grid.Row="1"
-                    Margin="0,4,0,0"
-                    Classes="text-muted"
-                    Text="{Binding DateText}" />
-
-
-                <!--  TEMPERATURE  -->
+                Grid.Row="0"
+                MinWidth="0"
+                VerticalAlignment="Top"
+                ColumnDefinitions="1*,Auto">
 
                 <StackPanel
-                    Grid.Row="2"
-                    Margin="0,22,0,0"
-                    VerticalAlignment="Center"
-                    Orientation="Horizontal">
+                    Grid.Column="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Spacing="5">
 
                     <TextBlock
-                        Classes="text-temperature"
+                        MaxWidth="380"
+                        FontFamily="Inter"
+                        FontSize="24"
+                        FontWeight="SemiBold"
                         Foreground="{StaticResource BrushTextPrimary}"
-                        Text="{Binding CurrentTemperature}" />
+                        Text="{Binding CityName}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="NoWrap" />
+
+                    <TextBlock
+                        MaxWidth="380"
+                        FontFamily="Inter"
+                        FontSize="11"
+                        FontWeight="Normal"
+                        Foreground="{StaticResource BrushTextMuted}"
+                        Text="{Binding DateText}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="NoWrap" />
 
                 </StackPanel>
 
+                <StackPanel
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="6">
 
-                <!--  CONDITION  -->
+                    <Border
+                        Width="7"
+                        Height="7"
+                        HorizontalAlignment="Right"
+                        Background="{StaticResource BrushSuccess}"
+                        CornerRadius="4" />
 
-                <TextBlock
-                    Grid.Row="3"
-                    Margin="0,4,0,0"
-                    FontFamily="Inter"
-                    FontSize="15"
-                    FontWeight="Medium"
-                    Foreground="{StaticResource BrushTextSecondary}"
-                    Text="{Binding CurrentCondition}" />
+                    <TextBlock
+                        HorizontalAlignment="Right"
+                        FontFamily="Inter"
+                        FontSize="9"
+                        FontWeight="SemiBold"
+                        Foreground="{StaticResource BrushTextMuted}"
+                        Text="СЕЙЧАС" />
 
+                </StackPanel>
 
-                <!--  FEELS LIKE  -->
-
-                <TextBlock
-                    Grid.Row="4"
-                    Margin="0,7,0,0"
-                    Classes="text-small"
-                    Foreground="{StaticResource BrushTextMuted}"
-                    Text="{Binding FeelsLike}" />
+            </Grid>
 
 
-                <!--  MIN / MAX  -->
+            <!--  Main content  -->
+            <Grid
+                Grid.Row="1"
+                MinWidth="0"
+                MinHeight="0"
+                Margin="0,8,0,8"
+                ColumnDefinitions="1.1*,0.9*"
+                ColumnSpacing="20">
 
+                <!--  Left column  -->
                 <Grid
-                    Grid.Row="5"
-                    Margin="0,16,0,0"
-                    VerticalAlignment="Bottom">
+                    Grid.Column="0"
+                    MinWidth="0"
+                    MinHeight="0"
+                    VerticalAlignment="Center"
+                    RowDefinitions="82,Auto,Auto">
 
-                    <StackPanel Orientation="Horizontal" Spacing="14">
+                    <Grid
+                        Grid.Row="0"
+                        MinHeight="82"
+                        MaxHeight="82"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top">
 
-                        <StackPanel Spacing="2">
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Inter"
+                            FontSize="58"
+                            FontWeight="SemiBold"
+                            Foreground="{StaticResource BrushTextPrimary}"
+                            Text="{Binding CurrentTemperature}"
+                            TextWrapping="NoWrap" />
 
-                            <TextBlock Classes="text-section-label" Text="СЕГОДНЯ" />
+                    </Grid>
 
-                            <TextBlock
-                                FontFamily="Inter"
-                                FontSize="13"
-                                FontWeight="Medium"
-                                Foreground="{StaticResource BrushTextSecondary}"
-                                Text="{Binding TodayMinMax}" />
+                    <TextBlock
+                        Grid.Row="1"
+                        MaxWidth="310"
+                        Margin="0,3,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        FontFamily="Inter"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        Foreground="{StaticResource BrushTextPrimary}"
+                        Text="{Binding CurrentCondition}"
+                        TextWrapping="Wrap" />
 
-                        </StackPanel>
+                </Grid>
 
-                    </StackPanel>
+
+                <!--  Right column  -->
+                <Grid
+                    Grid.Column="1"
+                    MinWidth="0"
+                    MinHeight="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center">
+
+                    <svg:Svg
+                        Width="165"
+                        Height="165"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        AnimationBackend="Default"
+                        AnimationFrameInterval="0:0:0.016"
+                        AnimationPlaybackRate="1"
+                        EnableCache="True"
+                        Path="{Binding CurrentIconPath}"
+                        Stretch="Uniform" />
 
                 </Grid>
 
             </Grid>
 
 
-            <!--  =================================================  -->
-            <!--  RIGHT — WEATHER VISUAL  -->
-            <!--  =================================================  -->
-
+            <!--  Bottom area  -->
             <Grid
-                Grid.Column="1"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center">
+                Grid.Row="2"
+                VerticalAlignment="Bottom"
+                RowDefinitions="1,Auto"
+                RowSpacing="12">
 
+                <Border
+                    Grid.Row="0"
+                    Height="1"
+                    HorizontalAlignment="Stretch"
+                    Background="{StaticResource BrushBorderSoft}" />
 
-                <!--  OUTER GLOW  -->
+                <Grid
+                    Grid.Row="1"
+                    MinHeight="0"
+                    ColumnDefinitions="1*,1,1*"
+                    ColumnSpacing="18">
 
-                <Ellipse
-                    Width="300"
-                    Height="300"
-                    Fill="{StaticResource BrushWeatherGlow}"
-                    Opacity="0.18" />
+                    <StackPanel
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        Spacing="3">
 
+                        <TextBlock Classes="text-section-label" Text="СЕГОДНЯ" />
 
-                <!--  INNER GLOW  -->
+                        <TextBlock
+                            FontFamily="Inter"
+                            FontSize="14"
+                            FontWeight="Medium"
+                            Foreground="{StaticResource BrushTextSecondary}"
+                            Text="{Binding TodayMinMax}"
+                            TextWrapping="NoWrap" />
 
-                <Ellipse
-                    Width="230"
-                    Height="230"
-                    Fill="{StaticResource BrushWeatherGlow}"
-                    Opacity="0.28" />
+                    </StackPanel>
 
+                    <Border
+                        Grid.Column="1"
+                        Width="1"
+                        Height="28"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="{StaticResource BrushBorderSoft}" />
 
-                <!--  ICON  -->
+                    <StackPanel
+                        Grid.Column="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Spacing="3">
 
-                <svg:Svg
-                    Width="220"
-                    Height="220"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    AnimationBackend="Default"
-                    AnimationFrameInterval="0:0:0.016"
-                    AnimationPlaybackRate="1"
-                    EnableCache="True"
-                    Path="{Binding CurrentIconPath}"
-                    Stretch="Uniform" />
+                        <TextBlock
+                            HorizontalAlignment="Right"
+                            Classes="text-section-label"
+                            Text="ОЩУЩАЕТСЯ" />
+
+                        <TextBlock
+                            HorizontalAlignment="Right"
+                            FontFamily="Inter"
+                            FontSize="14"
+                            FontWeight="Medium"
+                            Foreground="{StaticResource BrushTextSecondary}"
+                            Text="{Binding FeelsLike}"
+                            TextWrapping="NoWrap" />
+
+                    </StackPanel>
+
+                </Grid>
 
             </Grid>
 

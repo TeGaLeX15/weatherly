@@ -1,342 +1,239 @@
-<!-- Styles/Colors.axaml -->
+<!--  Styles/Colors.axaml  -->
+<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-<ResourceDictionary
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  =========================================================  -->
+    <!--  WEATHERLY — AURORA GLASS COLOR SYSTEM  -->
+    <!--  =========================================================  -->
 
-    <!-- ========================================================= -->
-    <!-- WEATHERLY — AURORA GLASS COLOR SYSTEM                    -->
-    <!-- ========================================================= -->
-
-    <!-- ========================= -->
-    <!-- BACKGROUND                -->
-    <!-- ========================= -->
+    <!--  =========================  -->
+    <!--  BACKGROUND  -->
+    <!--  =========================  -->
 
     <Color x:Key="ColorBackground">#06080D</Color>
     <Color x:Key="ColorBackgroundSecondary">#0A0E16</Color>
 
-    <!-- ========================= -->
-    <!-- SURFACES                  -->
-    <!-- ========================= -->
+
+    <!--  =========================  -->
+    <!--  SURFACES  -->
+    <!--  =========================  -->
 
     <Color x:Key="ColorSurface">#10151F</Color>
     <Color x:Key="ColorSurfaceElevated">#151C28</Color>
     <Color x:Key="ColorSurfaceStrong">#1C2533</Color>
 
-    <!-- ========================= -->
-    <!-- GLASS                     -->
-    <!-- ========================= -->
+
+    <!--  =========================  -->
+    <!--  GLASS  -->
+    <!--  =========================  -->
 
     <Color x:Key="ColorGlass">#661A2230</Color>
     <Color x:Key="ColorGlassStrong">#8C202A3A</Color>
     <Color x:Key="ColorGlassSoft">#40151C28</Color>
 
-    <!-- ========================= -->
-    <!-- BORDERS                   -->
-    <!-- ========================= -->
+
+    <!--  =========================  -->
+    <!--  BORDERS  -->
+    <!--  =========================  -->
 
     <Color x:Key="ColorBorder">#263445</Color>
     <Color x:Key="ColorBorderStrong">#405269</Color>
     <Color x:Key="ColorBorderSoft">#18222F</Color>
 
-    <!-- ========================= -->
-    <!-- TEXT                      -->
-    <!-- ========================= -->
+
+    <!--  =========================  -->
+    <!--  TEXT  -->
+    <!--  =========================  -->
 
     <Color x:Key="ColorTextPrimary">#F7F9FC</Color>
     <Color x:Key="ColorTextSecondary">#B8C2D0</Color>
     <Color x:Key="ColorTextMuted">#78869A</Color>
     <Color x:Key="ColorTextDisabled">#4B5667</Color>
 
-    <!-- ========================= -->
-    <!-- ACCENT                    -->
-    <!-- ========================= -->
+
+    <!--  =========================  -->
+    <!--  ACCENT  -->
+    <!--  =========================  -->
 
     <Color x:Key="ColorAccent">#73C7FF</Color>
     <Color x:Key="ColorAccentStrong">#42B5FF</Color>
     <Color x:Key="ColorAccentSoft">#287EB8</Color>
 
-    <!-- ========================= -->
-    <!-- STATUS                    -->
-    <!-- ========================= -->
+
+    <!--  =========================  -->
+    <!--  STATUS  -->
+    <!--  =========================  -->
 
     <Color x:Key="ColorSuccess">#63D6A0</Color>
     <Color x:Key="ColorWarning">#FFC76B</Color>
     <Color x:Key="ColorDanger">#FF7781</Color>
 
-    <!-- ========================= -->
-    <!-- WEATHER COLORS            -->
-    <!-- ========================= -->
+
+    <!--  =========================  -->
+    <!--  WEATHER COLORS  -->
+    <!--  =========================  -->
 
     <Color x:Key="ColorWeatherBlue">#4AA8FF</Color>
     <Color x:Key="ColorWeatherPurple">#8C7DFF</Color>
     <Color x:Key="ColorWeatherCyan">#63DFFF</Color>
     <Color x:Key="ColorWeatherWarm">#FFD06F</Color>
 
-    <!-- ========================================================= -->
-    <!-- BRUSHES                                                    -->
-    <!-- ========================================================= -->
 
-    <SolidColorBrush
-        x:Key="BrushBackground"
-        Color="{StaticResource ColorBackground}" />
+    <!--  =========================================================  -->
+    <!--  BRUSHES  -->
+    <!--  =========================================================  -->
 
-    <SolidColorBrush
-        x:Key="BrushBackgroundSecondary"
-        Color="{StaticResource ColorBackgroundSecondary}" />
+    <SolidColorBrush x:Key="BrushBackground" Color="{StaticResource ColorBackground}" />
 
-    <SolidColorBrush
-        x:Key="BrushSurface"
-        Color="{StaticResource ColorSurface}" />
+    <SolidColorBrush x:Key="BrushBackgroundSecondary" Color="{StaticResource ColorBackgroundSecondary}" />
 
-    <SolidColorBrush
-        x:Key="BrushSurfaceElevated"
-        Color="{StaticResource ColorSurfaceElevated}" />
+    <SolidColorBrush x:Key="BrushSurface" Color="{StaticResource ColorSurface}" />
 
-    <SolidColorBrush
-        x:Key="BrushSurfaceStrong"
-        Color="{StaticResource ColorSurfaceStrong}" />
+    <SolidColorBrush x:Key="BrushSurfaceElevated" Color="{StaticResource ColorSurfaceElevated}" />
 
-    <SolidColorBrush
-        x:Key="BrushGlass"
-        Color="{StaticResource ColorGlass}" />
+    <SolidColorBrush x:Key="BrushSurfaceStrong" Color="{StaticResource ColorSurfaceStrong}" />
 
-    <SolidColorBrush
-        x:Key="BrushGlassStrong"
-        Color="{StaticResource ColorGlassStrong}" />
+    <SolidColorBrush x:Key="BrushGlass" Color="{StaticResource ColorGlass}" />
 
-    <SolidColorBrush
-        x:Key="BrushGlassSoft"
-        Color="{StaticResource ColorGlassSoft}" />
+    <SolidColorBrush x:Key="BrushGlassStrong" Color="{StaticResource ColorGlassStrong}" />
 
-    <SolidColorBrush
-        x:Key="BrushBorder"
-        Color="{StaticResource ColorBorder}" />
+    <SolidColorBrush x:Key="BrushGlassSoft" Color="{StaticResource ColorGlassSoft}" />
 
-    <SolidColorBrush
-        x:Key="BrushBorderStrong"
-        Color="{StaticResource ColorBorderStrong}" />
+    <SolidColorBrush x:Key="BrushBorder" Color="{StaticResource ColorBorder}" />
 
-    <SolidColorBrush
-        x:Key="BrushBorderSoft"
-        Color="{StaticResource ColorBorderSoft}" />
+    <SolidColorBrush x:Key="BrushBorderStrong" Color="{StaticResource ColorBorderStrong}" />
 
-    <SolidColorBrush
-        x:Key="BrushTextPrimary"
-        Color="{StaticResource ColorTextPrimary}" />
+    <SolidColorBrush x:Key="BrushBorderSoft" Color="{StaticResource ColorBorderSoft}" />
 
-    <SolidColorBrush
-        x:Key="BrushTextSecondary"
-        Color="{StaticResource ColorTextSecondary}" />
+    <SolidColorBrush x:Key="BrushTextPrimary" Color="{StaticResource ColorTextPrimary}" />
 
-    <SolidColorBrush
-        x:Key="BrushTextMuted"
-        Color="{StaticResource ColorTextMuted}" />
+    <SolidColorBrush x:Key="BrushTextSecondary" Color="{StaticResource ColorTextSecondary}" />
 
-    <SolidColorBrush
-        x:Key="BrushTextDisabled"
-        Color="{StaticResource ColorTextDisabled}" />
+    <SolidColorBrush x:Key="BrushTextMuted" Color="{StaticResource ColorTextMuted}" />
 
-    <SolidColorBrush
-        x:Key="BrushAccent"
-        Color="{StaticResource ColorAccent}" />
+    <SolidColorBrush x:Key="BrushTextDisabled" Color="{StaticResource ColorTextDisabled}" />
 
-    <SolidColorBrush
-        x:Key="BrushAccentStrong"
-        Color="{StaticResource ColorAccentStrong}" />
+    <SolidColorBrush x:Key="BrushAccent" Color="{StaticResource ColorAccent}" />
 
-    <SolidColorBrush
-        x:Key="BrushSuccess"
-        Color="{StaticResource ColorSuccess}" />
+    <SolidColorBrush x:Key="BrushAccentStrong" Color="{StaticResource ColorAccentStrong}" />
 
-    <SolidColorBrush
-        x:Key="BrushWarning"
-        Color="{StaticResource ColorWarning}" />
+    <SolidColorBrush x:Key="BrushSuccess" Color="{StaticResource ColorSuccess}" />
 
-    <SolidColorBrush
-        x:Key="BrushDanger"
-        Color="{StaticResource ColorDanger}" />
+    <SolidColorBrush x:Key="BrushWarning" Color="{StaticResource ColorWarning}" />
 
-    <!-- ========================================================= -->
-    <!-- APPLICATION BACKGROUND                                    -->
-    <!-- ========================================================= -->
+    <SolidColorBrush x:Key="BrushDanger" Color="{StaticResource ColorDanger}" />
 
-    <LinearGradientBrush
-        x:Key="BrushAppBackground"
-        StartPoint="0,0"
-        EndPoint="1,1">
 
-        <GradientStop
-            Offset="0"
-            Color="#05070B" />
+    <!--  =========================================================  -->
+    <!--  APPLICATION BACKGROUND  -->
+    <!--  =========================================================  -->
 
-        <GradientStop
-            Offset="0.35"
-            Color="#090D15" />
+    <LinearGradientBrush x:Key="BrushAppBackground" StartPoint="0,0" EndPoint="1,1">
 
-        <GradientStop
-            Offset="0.7"
-            Color="#0C111B" />
+        <GradientStop Offset="0" Color="#05070B" />
 
-        <GradientStop
-            Offset="1"
-            Color="#111824" />
+        <GradientStop Offset="0.35" Color="#090D15" />
+
+        <GradientStop Offset="0.7" Color="#0C111B" />
+
+        <GradientStop Offset="1" Color="#111824" />
 
     </LinearGradientBrush>
 
-    <!-- ========================================================= -->
-    <!-- GLASS                                                     -->
-    <!-- ========================================================= -->
 
-    <LinearGradientBrush
-        x:Key="BrushGlassSurface"
-        StartPoint="0,0"
-        EndPoint="1,1">
+    <!--  =========================================================  -->
+    <!--  GLASS  -->
+    <!--  =========================================================  -->
 
-        <GradientStop
-            Offset="0"
-            Color="#A8222D3D" />
+    <LinearGradientBrush x:Key="BrushGlassSurface" StartPoint="0,0" EndPoint="1,1">
 
-        <GradientStop
-            Offset="0.25"
-            Color="#7A1B2533" />
+        <GradientStop Offset="0" Color="#A8222D3D" />
 
-        <GradientStop
-            Offset="0.65"
-            Color="#64151E2A" />
+        <GradientStop Offset="0.25" Color="#7A1B2533" />
 
-        <GradientStop
-            Offset="1"
-            Color="#52101721" />
+        <GradientStop Offset="0.65" Color="#64151E2A" />
+
+        <GradientStop Offset="1" Color="#52101721" />
 
     </LinearGradientBrush>
 
-    <!-- ========================================================= -->
-    <!-- STRONG GLASS                                               -->
-    <!-- ========================================================= -->
 
-    <LinearGradientBrush
-        x:Key="BrushGlassElevated"
-        StartPoint="0,0"
-        EndPoint="0,1">
+    <!--  =========================================================  -->
+    <!--  STRONG GLASS  -->
+    <!--  =========================================================  -->
 
-        <GradientStop
-            Offset="0"
-            Color="#B52A3546" />
+    <LinearGradientBrush x:Key="BrushGlassElevated" StartPoint="0,0" EndPoint="0,1">
 
-        <GradientStop
-            Offset="0.45"
-            Color="#8C1D2735" />
+        <GradientStop Offset="0" Color="#B52A3546" />
 
-        <GradientStop
-            Offset="1"
-            Color="#68131B26" />
+        <GradientStop Offset="0.45" Color="#8C1D2735" />
+
+        <GradientStop Offset="1" Color="#68131B26" />
 
     </LinearGradientBrush>
 
-    <!-- ========================================================= -->
-    <!-- GLASS HIGHLIGHT                                            -->
-    <!-- ========================================================= -->
 
-    <LinearGradientBrush
-        x:Key="BrushGlassHighlight"
-        StartPoint="0,0"
-        EndPoint="1,0">
+    <!--  =========================================================  -->
+    <!--  GLASS HIGHLIGHT  -->
+    <!--  =========================================================  -->
 
-        <GradientStop
-            Offset="0"
-            Color="#00FFFFFF" />
+    <LinearGradientBrush x:Key="BrushGlassHighlight" StartPoint="0,0" EndPoint="1,0">
 
-        <GradientStop
-            Offset="0.25"
-            Color="#22FFFFFF" />
+        <GradientStop Offset="0" Color="#00FFFFFF" />
 
-        <GradientStop
-            Offset="0.5"
-            Color="#38FFFFFF" />
+        <GradientStop Offset="0.25" Color="#22FFFFFF" />
 
-        <GradientStop
-            Offset="0.75"
-            Color="#12FFFFFF" />
+        <GradientStop Offset="0.5" Color="#38FFFFFF" />
 
-        <GradientStop
-            Offset="1"
-            Color="#00FFFFFF" />
+        <GradientStop Offset="0.75" Color="#12FFFFFF" />
+
+        <GradientStop Offset="1" Color="#00FFFFFF" />
 
     </LinearGradientBrush>
 
-    <!-- ========================================================= -->
-    <!-- ACCENT                                                     -->
-    <!-- ========================================================= -->
 
-    <LinearGradientBrush
-        x:Key="BrushAccentGradient"
-        StartPoint="0,0"
-        EndPoint="1,1">
+    <!--  =========================================================  -->
+    <!--  ACCENT  -->
+    <!--  =========================================================  -->
 
-        <GradientStop
-            Offset="0"
-            Color="#A4DEFF" />
+    <LinearGradientBrush x:Key="BrushAccentGradient" StartPoint="0,0" EndPoint="1,1">
 
-        <GradientStop
-            Offset="0.5"
-            Color="#73C7FF" />
+        <GradientStop Offset="0" Color="#A4DEFF" />
 
-        <GradientStop
-            Offset="1"
-            Color="#42B5FF" />
+        <GradientStop Offset="0.5" Color="#73C7FF" />
+
+        <GradientStop Offset="1" Color="#42B5FF" />
 
     </LinearGradientBrush>
 
-    <!-- ========================================================= -->
-    <!-- WEATHER GLOW                                               -->
-    <!-- ========================================================= -->
 
-    <RadialGradientBrush
-        x:Key="BrushWeatherGlow"
-        Center="0.5,0.5"
-        RadiusX="0.75"
-        RadiusY="0.75">
+    <!--  =========================================================  -->
+    <!--  WEATHER GLOW  -->
+    <!--  =========================================================  -->
 
-        <GradientStop
-            Offset="0"
-            Color="#5073C7FF" />
+    <RadialGradientBrush x:Key="BrushWeatherGlow" Center="0.5,0.5" RadiusX="0.75" RadiusY="0.75">
 
-        <GradientStop
-            Offset="0.3"
-            Color="#324B9BD0" />
+        <GradientStop Offset="0" Color="#5073C7FF" />
 
-        <GradientStop
-            Offset="0.65"
-            Color="#122B5A88" />
+        <GradientStop Offset="0.3" Color="#324B9BD0" />
 
-        <GradientStop
-            Offset="1"
-            Color="#00000000" />
+        <GradientStop Offset="0.65" Color="#122B5A88" />
+
+        <GradientStop Offset="1" Color="#00000000" />
 
     </RadialGradientBrush>
 
-    <!-- ========================================================= -->
-    <!-- PURPLE ATMOSPHERE                                          -->
-    <!-- ========================================================= -->
 
-    <RadialGradientBrush
-        x:Key="BrushPurpleGlow"
-        Center="0.5,0.5"
-        RadiusX="0.75"
-        RadiusY="0.75">
+    <!--  =========================================================  -->
+    <!--  PURPLE ATMOSPHERE  -->
+    <!--  =========================================================  -->
 
-        <GradientStop
-            Offset="0"
-            Color="#408C7DFF" />
+    <RadialGradientBrush x:Key="BrushPurpleGlow" Center="0.5,0.5" RadiusX="0.75" RadiusY="0.75">
 
-        <GradientStop
-            Offset="0.45"
-            Color="#1C514A99" />
+        <GradientStop Offset="0" Color="#408C7DFF" />
 
-        <GradientStop
-            Offset="1"
-            Color="#00000000" />
+        <GradientStop Offset="0.45" Color="#1C514A99" />
+
+        <GradientStop Offset="1" Color="#00000000" />
 
     </RadialGradientBrush>
 
