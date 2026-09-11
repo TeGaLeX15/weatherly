@@ -13,10 +13,17 @@ public sealed class MainViewModel : INotifyPropertyChanged
     private readonly GeocodingService _geocodingService;
     private readonly WeatherService _weatherService;
     private readonly ForecastAnalyzer _forecastAnalyzer;
+    private readonly LocationStorageService _locationStorageService;
+
+    private CancellationTokenSource? _searchCancellationTokenSource;
+
+    private Location? _currentLocation;
 
     private bool _isLoading;
-    private string _errorMessage = string.Empty;
+    private bool _isSearching;
+    private bool _isLocationPickerOpen;
 
+    private string _errorMessage = string.Empty;
     private string _cityName = "Щучинск";
     private string _dateText = string.Empty;
     private string _currentTemperature = "--°";
@@ -27,18 +34,18 @@ public sealed class MainViewModel : INotifyPropertyChanged
     private string _humidity = string.Empty;
     private string _sunrise = string.Empty;
     private string _sunset = string.Empty;
-
     private string _analysisText = string.Empty;
     private string _bestWalkTime = string.Empty;
     private string _clothingText = string.Empty;
     private string _weatherTip = string.Empty;
-
     private string _currentIconPath =
         "/Assets/Weather/overcast.svg";
 
     public ObservableCollection<HourlyWeatherItem> Hourly { get; } = [];
 
     public ObservableCollection<DailyWeatherItem> Daily { get; } = [];
+
+    public ObservableCollection<Location> SearchResults { get; } = [];
 
     public string CityName
     {
@@ -136,6 +143,18 @@ public sealed class MainViewModel : INotifyPropertyChanged
         private set => SetField(ref _isLoading, value);
     }
 
+    public bool IsSearching
+    {
+        get => _isSearching;
+        private set => SetField(ref _isSearching, value);
+    }
+
+    public bool IsLocationPickerOpen
+    {
+        get => _isLocationPickerOpen;
+        set => SetField(ref _isLocationPickerOpen, value);
+    }
+
     public string ErrorMessage
     {
         get => _errorMessage;
@@ -157,6 +176,9 @@ public sealed class MainViewModel : INotifyPropertyChanged
 
         _forecastAnalyzer =
             new ForecastAnalyzer();
+
+        _locationStorageService =
+            new LocationStorageService();
     }
 
     public async Task LoadAsync(
@@ -172,25 +194,37 @@ public sealed class MainViewModel : INotifyPropertyChanged
             IsLoading = true;
             ErrorMessage = string.Empty;
 
-            var locations =
-                await _geocodingService.SearchAsync(
-                    "Щучинск",
-                    cancellationToken: cancellationToken);
-
-            var location = locations.FirstOrDefault();
-
-            if (location is null)
+            if (_currentLocation is null)
             {
-                throw new InvalidOperationException(
-                    "Не удалось найти город Щучинск.");
+                _currentLocation =
+                    await _locationStorageService.LoadAsync(
+                        cancellationToken);
+
+                if (_currentLocation is null)
+                {
+                    var locations =
+                        await _geocodingService.SearchAsync(
+                            "Щучинск",
+                            cancellationToken: cancellationToken);
+
+                    _currentLocation =
+                        locations.FirstOrDefault();
+
+                    if (_currentLocation is null)
+                    {
+                        throw new InvalidOperationException(
+                            "Не удалось найти город Щучинск.");
+                    }
+
+                    await _locationStorageService.SaveAsync(
+                        _currentLocation,
+                        cancellationToken);
+                }
             }
 
-            var forecast =
-                await _weatherService.GetForecastAsync(
-                    location,
-                    cancellationToken);
-
-            UpdateWeather(forecast);
+            await LoadLocationAsync(
+                _currentLocation,
+                cancellationToken);
         }
         catch (OperationCanceledException)
         {
@@ -211,6 +245,127 @@ public sealed class MainViewModel : INotifyPropertyChanged
         }
     }
 
+    public async Task SearchLocationsAsync(
+        string query,
+        CancellationToken cancellationToken = default)
+    {
+        _searchCancellationTokenSource?.Cancel();
+        _searchCancellationTokenSource?.Dispose();
+
+        _searchCancellationTokenSource =
+            CancellationTokenSource.CreateLinkedTokenSource(
+                cancellationToken);
+
+        var searchToken =
+            _searchCancellationTokenSource.Token;
+
+        SearchResults.Clear();
+
+        if (string.IsNullOrWhiteSpace(query))
+        {
+            IsSearching = false;
+            return;
+        }
+
+        try
+        {
+            IsSearching = true;
+
+            await Task.Delay(
+                350,
+                searchToken);
+
+            var locations =
+                await _geocodingService.SearchAsync(
+                    query,
+                    count: 8,
+                    cancellationToken: searchToken);
+
+            if (searchToken.IsCancellationRequested)
+            {
+                return;
+            }
+
+            foreach (var location in locations)
+            {
+                SearchResults.Add(location);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage =
+                $"Не удалось выполнить поиск: {ex.Message}";
+        }
+        finally
+        {
+            if (!searchToken.IsCancellationRequested)
+            {
+                IsSearching = false;
+            }
+        }
+    }
+
+    public async Task SelectLocationAsync(
+        Location location,
+        CancellationToken cancellationToken = default)
+    {
+        if (IsLoading)
+        {
+            return;
+        }
+
+        try
+        {
+            IsLoading = true;
+            ErrorMessage = string.Empty;
+
+            await LoadLocationAsync(
+                location,
+                cancellationToken);
+
+            _currentLocation = location;
+
+            await _locationStorageService.SaveAsync(
+                location,
+                cancellationToken);
+
+            SearchResults.Clear();
+            IsLocationPickerOpen = false;
+        }
+        catch (OperationCanceledException)
+        {
+            if (!cancellationToken.IsCancellationRequested)
+            {
+                ErrorMessage =
+                    "Загрузка погоды была прервана.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage =
+                $"Не удалось загрузить погоду: {ex.Message}";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private async Task LoadLocationAsync(
+        Location location,
+        CancellationToken cancellationToken)
+    {
+        var forecast =
+            await _weatherService.GetForecastAsync(
+                location,
+                cancellationToken);
+
+        UpdateWeather(forecast);
+    }
+
     private void UpdateWeather(
         WeatherForecast forecast)
     {
@@ -222,7 +377,8 @@ public sealed class MainViewModel : INotifyPropertyChanged
         DateText =
             current.Time.ToString(
                 "dddd, d MMMM",
-                new System.Globalization.CultureInfo("ru-RU"));
+                new System.Globalization.CultureInfo(
+                    "ru-RU"));
 
         CurrentTemperature =
             $"{Math.Round(current.Temperature):0}°";
@@ -233,7 +389,8 @@ public sealed class MainViewModel : INotifyPropertyChanged
                 current.IsDay);
 
         FeelsLike =
-            $"Ощущается как {Math.Round(current.ApparentTemperature):0}°";
+            $"Ощущается как " +
+            $"{Math.Round(current.ApparentTemperature):0}°";
 
         var today =
             forecast.Daily.FirstOrDefault();
@@ -262,8 +419,12 @@ public sealed class MainViewModel : INotifyPropertyChanged
                 current.WeatherCode,
                 current.IsDay);
 
-        UpdateHourly(forecast.Hourly);
-        UpdateDaily(forecast.Daily);
+        UpdateHourly(
+            forecast.Hourly,
+            current.Time);
+
+        UpdateDaily(
+            forecast.Daily);
 
         var analysis =
             _forecastAnalyzer.Analyze(forecast);
@@ -278,20 +439,26 @@ public sealed class MainViewModel : INotifyPropertyChanged
             analysis.Clothing;
 
         WeatherTip =
-            $"{analysis.Tip} {analysis.TemperatureTrend}";
+            $"{analysis.Tip} " +
+            $"{analysis.TemperatureTrend}";
     }
 
     private void UpdateHourly(
-        IReadOnlyList<HourlyWeather> hourly)
+        IReadOnlyList<HourlyWeather> hourly,
+        DateTime currentTime)
     {
         Hourly.Clear();
 
         var startIndex =
             hourly
                 .Select((weather, index) =>
-                    new { weather, index })
+                    new
+                    {
+                        weather,
+                        index
+                    })
                 .FirstOrDefault(x =>
-                    x.weather.Time >= DateTime.Now)?
+                    x.weather.Time >= currentTime)?
                 .index ?? 0;
 
         foreach (var weather in hourly
@@ -315,8 +482,7 @@ public sealed class MainViewModel : INotifyPropertyChanged
         }
     }
 
-    public event PropertyChangedEventHandler?
-        PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     private void SetField<T>(
         ref T field,
@@ -334,7 +500,8 @@ public sealed class MainViewModel : INotifyPropertyChanged
 
         PropertyChanged?.Invoke(
             this,
-            new PropertyChangedEventArgs(propertyName));
+            new PropertyChangedEventArgs(
+                propertyName));
     }
 }
 
@@ -362,10 +529,12 @@ public sealed class HourlyWeatherItem
             $"{Math.Round(weather.Temperature):0}°";
 
         PrecipitationProbability =
-            $"{Math.Round(weather.PrecipitationProbability):0}%";
+            $"{Math.Round(
+                weather.PrecipitationProbability):0}%";
 
         Wind =
-            $"{Math.Round(weather.WindSpeed):0} м/с";
+            $"{Math.Round(
+                weather.WindSpeed):0} м/с";
 
         Humidity =
             $"{weather.RelativeHumidity}%";
@@ -419,7 +588,8 @@ public sealed class DailyWeatherItem
             $"{Math.Round(weather.TemperatureMax):0}°";
 
         PrecipitationProbability =
-            $"{Math.Round(weather.PrecipitationProbability):0}%";
+            $"{Math.Round(
+                weather.PrecipitationProbability):0}%";
 
         IconPath =
             WeatherCodeMapper.GetIconPath(
@@ -440,13 +610,14 @@ public static class WeatherCodeMapper
                 ? "Ясно"
                 : "Ясная ночь",
 
-            1 or 2 => isDay
-                ? "Переменная облачность"
-                : "Переменная облачность",
+            1 or 2 =>
+                "Переменная облачность",
 
-            3 => "Пасмурно",
+            3 =>
+                "Пасмурно",
 
-            45 or 48 => "Туман",
+            45 or 48 =>
+                "Туман",
 
             51 or 53 or 55 or 56 or 57 =>
                 "Морось",
